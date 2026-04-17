@@ -1,5 +1,17 @@
-console.log('Hier komt je server voor Sprint 10.')
+import express from 'express'
+import { Liquid } from 'liquidjs';
 
-console.log('Gebruik uit Sprint 9 alleen de code die je mee wilt nemen.')
+const app = express();
+const apiResponse = await fetch('https://fdnd-agency.directus.app/items/preludefonds_instruments')
+const apiResponseJSON = await apiResponse.json()
 
-console.log('Zet \'m op!')
+app.use(express.urlencoded({extended: true}));
+app.use(express.static('public'));
+
+const engine = new Liquid();
+app.engine('liquid', engine.express());
+app.set('views', './views');
+
+app.get('/', async function (request, response) {
+  response.render('.liquid');
+});
