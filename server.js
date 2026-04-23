@@ -21,7 +21,7 @@ app.get('/instrumenten', async function (request, response) {
 });
 
 app.get('/instrumenten:id', async function (request, response) {
-  response.render('detail.liquid');
+    response.render('detail.liquid')
 });
 
 app.get('/activiteiten', async function (request, response) {
