@@ -1,0 +1,6 @@
+/*header*/
+.logo{
+    width: clamp(200px, 30vw, 430px);
+    height: auto;
+    display: block;
+}
