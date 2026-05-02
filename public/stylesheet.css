@@ -123,15 +123,15 @@
   --font-weight-regular:     400;
   --font-weight-bold:        700;
 
-  --font-size-h1:            3rem;
-  --font-size-h2:            2.25rem;
-  --font-size-h3:            1.75rem;
-  --font-size-h4:            1.25rem;
-  --font-size-h5:            1rem;
+  --font-size-h1:            clamp(2rem,    4vw + 1rem, 3rem);
+  --font-size-h2:            clamp(1.5rem,  3vw + 1rem, 2.25rem);
+  --font-size-h3:            clamp(1.25rem, 2vw + 1rem, 1.75rem);
+  --font-size-h4:            clamp(1.1rem,  1vw + 1rem, 1.25rem);
+  --font-size-h5:            clamp(1rem,    0.5vw + 1rem, 1rem);
 
-  --font-size-body-sm:       1rem;
-  --font-size-body-md:       1.25rem;
-  --font-size-body-lg:       1.5rem;
+  --font-size-body-sm:       clamp(0.875rem, 0.5vw + 0.75rem, 1rem);
+  --font-size-body-md:       clamp(1rem,     0.5vw + 0.875rem, 1.25rem);
+  --font-size-body-lg:       clamp(1.125rem, 1vw + 0.875rem, 1.5rem);
 
   --line-height-heading:     1.1;
   --line-height-body:        1.6;
@@ -144,8 +144,8 @@
   --spacing-sm:              0.5rem;     
   --spacing-md:              1rem;       
   --spacing-lg:              1.5rem;  
-  --spacing-xl:              2rem;      
-  --spacing-2xl:             3rem;     
+  --spacing-xl:              3rem;      
+  --spacing-2xl:             4rem;     
 
   /* Borders =================================================================================*/
   --border-width-sm:         1px; 
