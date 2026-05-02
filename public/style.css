@@ -3,6 +3,7 @@
 .main-header{
     position: relative;
     height: 124px;
+    background-color: var(--color-bg-header);
     .v-lines {
         position: absolute;
         top: 0;       

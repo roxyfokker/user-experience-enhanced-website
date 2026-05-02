@@ -102,7 +102,8 @@
   /* Achtergronden */
   --color-bg-default:        var(--palette-neutral-100);
   --color-bg-inverse:        var(--palette-neutral-900);
-
+  --color-bg-header:         var(--palette-neutral-100);
+ 
   /* Buttons */
   --color-btn-base:          var(--color-brand-darker);
   --color-btn-hover:         var(--color-brand-dark);
@@ -128,9 +129,9 @@
   --font-size-h4:            1.25rem;
   --font-size-h5:            1rem;
 
-  --font-size-body-sm:            1rem;
-  --font-size-body-md:            1.25rem;
-  --font-size-body-lg:            1.5rem;
+  --font-size-body-sm:       1rem;
+  --font-size-body-md:       1.25rem;
+  --font-size-body-lg:       1.5rem;
 
   --line-height-heading:     1.1;
   --line-height-body:        1.6;
@@ -160,6 +161,13 @@
   --border-color-caution:    var(--color-caution-dark);
   --border-color-positive:   var(--color-positive-dark);
   --border-color-unknown:    var(--color-unknown-dark);
+
+  /* Shadows =================================================================================*/
+  --shadow-btn-default:      4px 4px 8px rgba(70, 22, 107, 0.20);
+  --shadow-btn-hover:        inset -2px -4px 2px rgba(0, 0, 0, 0.25), inset 2px 4px 2px rgba(255, 255, 255, 0.25), 0px 6.5px 13px rgba(70, 22, 107, 0.40);
+  --shadow-btn-active:       inset 2px 4px 8px rgba(0, 0, 0, 1), inset 0px -2px 4px rgba(255, 255, 255, 0.35);
+  --shadow-btn-focus:        inset -2px -4px 2px rgba(0, 0, 0, 0.25), inset 2px 2px 4px rgba(255, 255, 255, 0.25), 0px 6.5px 13px rgba(70, 22, 107, 0.40);
+  --shadow-btn-disabled:     3px 3px 7.5px rgba(70, 22, 107, 0.20);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -169,6 +177,7 @@
 
     --color-text-default:    var(--color-neutral-surface);
     --color-text-inverse:    var(--color-neutral-darkest);
+    --color-text-brand:      var(--color-neutral-surface);
   }
 }
 
@@ -176,6 +185,7 @@ html{
   overflow-x:                hidden;
   max-width:                 100%;
   scroll-behavior:           smooth; 
+  background-color:          var(--color-bg-default);
 }
 
 * {
@@ -221,4 +231,61 @@ p{
   font-size:                var(--font-size-body-md);
   max-width:                70ch;
   margin:                   0 0 1rem 0;
+}
+
+
+
+
+/* button - primary */
+.btn{
+  align-items:             center;
+  gap:                     var(--spacing-sm);
+  padding:                 var(--spacing-sm) var(--spacing-md);
+  font-family:             var(--font-primary);
+  font-size:               var(--font-size-body-md);
+  font-weight:             var(--font-weight-bold);
+  line-height:             1;
+  white-space:             nowrap;
+  background-color:        var(--color-btn-base);
+  color:                   var(--color-text-inverse);
+  border:                  var(--border-width-md) solid transparent;
+  border-radius:           var(--border-radius);
+  box-shadow:              var(--shadow-btn-default);
+  cursor:                  pointer;
+
+  @media (prefers-reduced-motion: no-preference) {
+    .btn { transition: all 150ms ease-out}
+  }
+}
+
+.btn svg {
+  width:            1em;
+  height:           1em;
+  flex-shrink:      0;
+}
+
+.btn:hover {
+  background-color:        var(--color-btn-hover);
+  box-shadow:              var(--shadow-btn-hover);
+}
+
+.btn:active {
+  background-color:        var(--color-btn-active);
+  box-shadow:              var(--shadow-btn-active);
+}
+
+.btn:focus-visible {
+  background-color:        var(--color-btn-focus);
+  border-color:            var(--color-neutral-surface);
+  outline:                 var(--border-width-md) solid var(--color-brand-dark);
+  outline-offset:          2px;
+  box-shadow:              var(--shadow-btn-focus);
+}
+
+.btn:disabled {
+  background-color:        var(--color-btn-disabled);
+  color:                   var(--color-neutral-dark);
+  cursor:                  not-allowed;
+  pointer-events:          none;
+  box-shadow:              var(--shadow-btn-disabled);
 }
