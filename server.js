@@ -2,8 +2,6 @@ import express from 'express'
 import { Liquid } from 'liquidjs';
 
 const app = express();
-const apiResponse = await fetch('https://fdnd-agency.directus.app/items/preludefonds_instruments')
-const apiResponseJSON = await apiResponse.json()
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
@@ -13,7 +11,7 @@ app.engine('liquid', engine.express());
 app.set('views', './views');
 
 app.get('/', async function (request, response) {
-  let url = 'https://fdnd-agency.directus.app/items/preludefonds_instruments/'
+  let url = 'https://fdnd-agency.directus.app/items/preludefonds_instruments/?limit=-1'
   const instrumentsResponse = await fetch(url) 
   const instrumentsResponseJSON = await instrumentsResponse.json()
   const totalItems = instrumentsResponseJSON.data.length;
@@ -26,7 +24,7 @@ app.get('/', async function (request, response) {
 });
 
 app.get('/instrumenten', async function (request, response) {
-  let url = 'https://fdnd-agency.directus.app/items/preludefonds_instruments/'
+  let url = 'https://fdnd-agency.directus.app/items/preludefonds_instruments/?limit=-1'
   const instrumentsResponse = await fetch(url) 
   const instrumentsResponseJSON = await instrumentsResponse.json()
   const totalItems = instrumentsResponseJSON.data.length;
