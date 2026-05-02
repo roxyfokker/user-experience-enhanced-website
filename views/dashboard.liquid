@@ -1,48 +1,82 @@
 {% render 'layouts/base.liquid' %}
 {% block content %}
-    <dl class="status-overview">
+<main>
+    <header>
+        <p>PRELUDEFONDS - INSTRUMENTENBEHEER</p>
+        <h1>
+            <span>
+                {% assign hour = 'now' | date: '%H' | plus: 0 %}
+                {% if hour < 12 %}
+                    Goeiemorgen,
+                {% elsif hour < 18 %}
+                    Goeiemiddag,
+                {% else %}
+                    Goeieavond,
+                {% endif %}
+            </span>
+            Hier is het overzicht van vandaag.
+        </h1>
+        <p>Hier vind je het actuele overzicht van de instrumenten uitleen </p>
+    </header>
 
-    <div class="status-box status-available">
-        <dt>Beschikbaar</dt>
-        <dd>
-        {% assign available_count = 0 %}
-        {% for instrument in instruments %}
-            {% assign status = instrument.status | downcase %}
-            {% if status == "beschikbaar" %}
-            {% assign available_count = available_count | plus: 1 %}
-            {% endif %}
-        {% endfor %}
-        {{ available_count }}
-        </dd>
-    </div>
-
-    <div class="status-box status-repair">
-        <dt>In reparatie</dt>
-        <dd>
-        {% assign repair_count = 0 %}
-            {% for instrument in instruments %}
-            {% assign status = instrument.status | downcase %}
-            {% if status == "in reparatie" %}
-                {% assign repair_count = repair_count | plus: 1 %}
-            {% endif %}
-            {% endfor %}
-            {{ repair_count }}
-        </dd>
-    </div>
+    <section aria-label="Statistieken instrumenten">
+        <dl>
+            <div>
+                <dt>Totaal aantal instrumenten in beheer</dt>
+                <dd>{{ totalItems }}</dd>
+            </div>
+            
+            <div>
+                <dt>Preludefonds</dt>
+                <dd>{{ totalPrelude }}</dd>  
     
-    <div class="status-box status-borrowed">
-        <dt>Uitgeleend</dt>
-        <dd>
-        {% assign repair_borrowed = 0 %}
-            {% for instrument in instruments %}
-            {% assign status = instrument.status | downcase %}
-            {% if status == "verhuurd" or status == "in gebruik voor school" %}
-                {% assign repair_borrowed = repair_borrowed | plus: 1 %}
-            {% endif %}
-            {% endfor %}
-            {{ repair_borrowed }}
-        </dd>
-    </div>
+                <dt>Extern</dt>
+                <dd>{{ totalAnders }}</dd>
+            </div>
+        </dl>
+        <dl>
+            <div>
+                <dt>Beschikbaar</dt>
+                <dd>{{ totalBeschikbaar }}</dd>
+                {% assign totalBeschikbaarInPercentage = totalBeschikbaar | times: 100.0 | divided_by: totalItems | round %}
+                <dd>{{ totalBeschikbaarInPercentage }}%</dd>
+            </div>
+            
+            <div>
+                <dt>In reperatie</dt>
+                <dd>{{ totalReparatie }}</dd>
+                {% assign totalReparatieInPercentage = totalReparatie | times: 100.0 | divided_by: totalItems | round %}
+                <dd>{{ totalReparatieInPercentage }}%</dd>
+            </div>
 
-    </dl>
+            <div>
+                <dt>Uitgeleend</dt>
+                <dd>{{ totalUitgeleend }}</dd>
+                {% assign totalUitgeleendInPercentage =  totalUitgeleend | times: 100.0 | divided_by: totalItems | round %}
+                <dd>{{ totalUitgeleendInPercentage }}%</dd>
+            </div>
+        </dl>
+    </section>
+
+    <section>
+        <p>Inventaris</p>
+        <h2>Overzichttabel preview</h2>
+        <iframe src="/instrumenten" title="Overzicht instrumenten" frameborder="0">
+            <a href="/instrumenten">Bekijk het hele overzicht</a>
+        </iframe>
+    </section>
+    
+    <section>
+        <!--hier komen de laatst uitgevoerde activiteiten -->
+        <h2>Activiteiten</h2>
+        <a href="/activiteiten"></a>
+    </section>
+
+    <section>
+        <!--moet nog komen-->
+    </section>
+
+</main>
+
+
 {% endblock %}

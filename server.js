@@ -11,23 +11,41 @@ app.engine('liquid', engine.express());
 app.set('views', './views');
 
 app.get('/', async function (request, response) {
-  let url = 'https://fdnd-agency.directus.app/items/preludefonds_instruments/?limit=-1'
+  const url = 'https://fdnd-agency.directus.app/items/preludefonds_instruments/?limit=-1'
   const instrumentsResponse = await fetch(url) 
   const instrumentsResponseJSON = await instrumentsResponse.json()
-  const totalItems = instrumentsResponseJSON.data.length;
+  const allInstruments = instrumentsResponseJSON.data
+
+  // Aantal instrumenten in database
+  const totalItems = allInstruments.length
+  // Aantal instrumenten met property preludefonds
+  const totalPrelude = allInstruments.filter(i => i.property?.toLowerCase() === 'preludefonds').length
+  // Aantal isntrumenten met property anders dan prelude fonds en null niet meerekenen 
+  const totalAnders = allInstruments.filter(i => i.property !== null && i.property?.toLowerCase() !== 'preludefonds').length
+  // Aantal instrumenten die beschikbaar zijn
+  const totalBeschikbaar = allInstruments.filter(i => i.status !== null && i.status?.toLowerCase() === 'beschikbaar').length
+  // Aantal instrumenten die in reparatie zijn
+  const totalUitgeleend = allInstruments.filter(i => i.status !== null && i.status?.toLowerCase() === 'uitgeleend').length
+  // Aantal instrumenten die uitgeleent zijn 
+  const totalReparatie = allInstruments.filter(i => i.status !== null && i.status?.toLowerCase() === 'in reparatie').length
 
   response.render('dashboard.liquid', {
-    instruments: instrumentsResponseJSON.data,
-    status: request.query.status || null,
+    instruments: allInstruments,
     totalItems: totalItems,
+    totalPrelude: totalPrelude,
+    totalAnders: totalAnders,
+    totalBeschikbaar: totalBeschikbaar,
+    totalUitgeleend: totalUitgeleend,
+    totalReparatie: totalReparatie,
+    status: request.query.status || null,
   });
 });
 
 app.get('/instrumenten', async function (request, response) {
-  let url = 'https://fdnd-agency.directus.app/items/preludefonds_instruments/?limit=-1'
+  const url = 'https://fdnd-agency.directus.app/items/preludefonds_instruments/?limit=-1'
   const instrumentsResponse = await fetch(url) 
   const instrumentsResponseJSON = await instrumentsResponse.json()
-  const totalItems = instrumentsResponseJSON.data.length;
+  const allInstruments = instrumentsResponseJSON.data
 
   response.render('overzicht.liquid', {
     instruments: instrumentsResponseJSON.data,
