@@ -1,58 +1,30 @@
-{% render 'layouts/base.liquid' %}
-{% block content %}
-<main class="instrument-overview-main">
-    <h2>Overzicht van de instrumenten</h2>
-    {% if successName %}
-        <div class="melding-success">
-            <img src="/icons/available.svg" alt="">
-            <div>
-                <p>Opslaan is gelukt !</p>
-                <p>{{ SuccessName }} is toegevoegd aan het overzicht </p>
-            </div>
-        </div>
-    {% endif %}
-
-    <section class="instrument-nav-panel">
-        <form action="" class="zoekbalk" id="zoekbalk">
-            <input id="zoekbalk" placeholder="zoeken" type="text">
-            <button></button>
-        </form>
-        <div class="button-box">
-            <button class="button button-primary button--new">Nieuw instrument toevoegen</button>
-            <select class="button button-primary button--filter" onchange="if(this.value) window.location.href=this.value">
-                <option value="">Filters</option>
-                <option value="/instrumenten?status=Beschikbaar">Beschikbaar</option>
-                <option value="/instrumenten?status=Uitgeleend">Uitgeleend</option>
-                <option value="/instrumenten?status=In reparatie">In reparatie</option>
-                <option value="/instrumenten">Geen filters</option>
-            </select>
-        </div> 
-        
-        <fieldset class="view-toggle">
-            <button class="button button-primary button--list">List</button>
-            <button class="button button-secondary button--grid">Grid</button>
-        </fieldset>
-    </section>
-
- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preload" href="/fonts/akkurat-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/stylesheet.css">
+    <link rel="stylesheet" href="/style.css">
+    <title>{{ title | default: "PreludeFonds" }}</title>
+</head>
+<body>
+     <div class="preview-wrapper">
     <section class="instrument-table-section">
-        <p>{{ totalItems }} instrumenten gevonden</p>
-
-        <div class="table-wrapper">
-            <table class="instrument-table">
-                <thead>
-                    <tr>
-                        <th scope="col">
-                            Naam instrument
-                            <a href="?sort={% if sort == 'name' %}-name{% else %}name{% endif %}" data-sort="{% if sort == 'name' %}asc{% elsif sort == '-name' %}desc{% endif %}">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="24" height="24">
-                                    <path class="pijl-omlaag" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" 
-                                        d="M6 16h12m0 0 -4.125 -4M18 16l-4.125 4" stroke-width="1.5"/>
-                                    <path class="pijl-omhoog" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" 
-                                        d="M18 8H6m0 0 4.125 -4M6 8l4.125 4" stroke-width="1.5"/>
-                                </svg>
-                            </a>
-                        </th>
+    <table class="instrument-table">
+        <thead>
+            <tr>
+                <th scope="col">
+                    Naam instrument
+                    <a href="?sort={% if sort == 'name' %}-name{% else %}name{% endif %}" data-sort="{% if sort == 'name' %}asc{% elsif sort == '-name' %}desc{% endif %}">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="24" height="24">
+                            <path class="pijl-omlaag" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" 
+                                d="M6 16h12m0 0 -4.125 -4M18 16l-4.125 4" stroke-width="1.5"/>
+                            <path class="pijl-omhoog" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" 
+                                d="M18 8H6m0 0 4.125 -4M6 8l4.125 4" stroke-width="1.5"/>
+                        </svg>
+                    </a>
+                </th>
                         <th scope="col">
                             Serienummer
                             <a href="?sort={% if sort == 'serial_number' %}-serial_number{% else %}serial_number{% endif %}" data-sort="{% if sort == 'serial_number' %}asc{% elsif sort == '-serial_number' %}desc{% endif %}">
@@ -127,28 +99,8 @@
                     {% endif %}
                 </tbody>
             </table>
-        </div>
-
-        
-
-
-
-        
-        <nav class="paginering">
-            {% assign cp = currentPage | plus: 0 %}
-            {% for i in pages %}
-                {% assign ip = i | plus: 0 %}
-                {% if ip == cp %}
-                <button class="actief">{{ i }}</button>
-                {% else %}
-                <a href="?page={{ i }}&status={{ status }}&sort={{ sort }}">{{ i }}</a>
-                {% endif %}
-            {% endfor %}
-        </nav>
-
-
-    </section>
-
-</main>
-
-{% endblock %}
+</section>
+</div>
+    <script src="/script.js"></script>
+</body>
+</html>   
