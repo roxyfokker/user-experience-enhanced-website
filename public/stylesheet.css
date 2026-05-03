@@ -113,7 +113,7 @@
 
   /* Text */
   --color-text-default:      var(--color-neutral-darkest);
-  --color-text-brand:        var(--color-brand-dark);
+  --color-text-brand:        var(--color-brand-darker);
   --color-text-inverse:      var(--color-neutral-surface);
 
   /*typografie===================================================================================*/
@@ -129,15 +129,20 @@
   --font-size-h4:            clamp(1.1rem,  1vw + 1rem, 1.25rem);
   --font-size-h5:            clamp(1rem,    0.5vw + 1rem, 1rem);
 
+  --font-size-body-xs:       clamp(0.75rem,  0.25vw + 0.7rem,  0.9rem);
   --font-size-body-sm:       clamp(0.875rem, 0.5vw + 0.75rem, 1rem);
   --font-size-body-md:       clamp(1rem,     0.5vw + 0.875rem, 1.25rem);
   --font-size-body-lg:       clamp(1.125rem, 1vw + 0.875rem, 1.5rem);
+  --font-size-body-2xl:      clamp(3rem,     3vw    + 1.5rem,   4.5rem);
 
   --line-height-heading:     1.1;
   --line-height-body:        1.6;
 
   --letter-spacing-heading:  -0.02em;
   --letter-spacing-body:     0;
+  --letter-spacing-sm:       0.03em;
+  --letter-spacing-md:       0.05em;
+
 
   /* Padding / Spacing =======================================================================*/
   --spacing-xs:              0.25rem;    
@@ -168,6 +173,7 @@
   --shadow-btn-active:       inset 2px 4px 8px rgba(0, 0, 0, 1), inset 0px -2px 4px rgba(255, 255, 255, 0.35);
   --shadow-btn-focus:        inset -2px -4px 2px rgba(0, 0, 0, 0.25), inset 2px 2px 4px rgba(255, 255, 255, 0.25), 0px 6.5px 13px rgba(70, 22, 107, 0.40);
   --shadow-btn-disabled:     3px 3px 7.5px rgba(70, 22, 107, 0.20);
+  --shadow-widget:           0px 3px 6px rgba(70, 22, 107, 0.20)
 }
 
 @media (prefers-color-scheme: dark) {
@@ -191,6 +197,7 @@ html{
 * {
   margin:                    0;
   padding:                   0;
+  min-width:                 0;
   box-sizing:                border-box;
 }
 
@@ -218,7 +225,7 @@ h1, h2, h3, h4, h5{
   line-height:              var(--line-height-heading);
   letter-spacing:           var(--letter-spacing-heading);
   color:                    var(--color-text-brand);
-  margin:                   0 0 1rem 0;
+  margin:                   0 0 0.5rem 0;
 }
 
 h1{ font-size:              var(--font-size-h1);}

@@ -1,10 +1,10 @@
 {% render 'layouts/base.liquid' %}
 {% block content %}
 <main>
-    <header>
+    <header class="dashboard-header">
         <p>PRELUDEFONDS - INSTRUMENTENBEHEER</p>
         <h1>
-            <span>
+            <span class="greeting">
                 {% assign hour = 'now' | date: '%H' | plus: 0 %}
                 {% if hour < 12 %}
                     Goeiemorgen,
@@ -17,43 +17,43 @@
             Hier is het overzicht van vandaag.
         </h1>
         <p>Hier vind je het actuele overzicht van de instrumenten uitleen </p>
+        <time datetime="{{ 'now' | date: '%Y-%m-%d' }}">{{ 'now' | date: '%A %-d %B %Y' }}</time>
     </header>
 
-    <section aria-label="Statistieken instrumenten">
-        <dl>
-            <div>
-                <dt>Totaal aantal instrumenten in beheer</dt>
-                <dd>{{ totalItems }}</dd>
+    <section class="stats" aria-label="Statistieken instrumenten">
+        <dl class="stats-totaal">
+            <div class="stats-item">
+                <dt class="label">Totaal aantal instrumenten</dt>
+                <dd class="value">{{ totalItems }}</dd>
             </div>
             
-            <div>
-                <dt>Preludefonds</dt>
-                <dd>{{ totalPrelude }}</dd>  
-    
-                <dt>Extern</dt>
-                <dd>{{ totalAnders }}</dd>
+            <div class="stats-item property-of">
+                <dt class="label">Preludefonds</dt>
+                <dd class="value">{{ totalPrelude }}</dd>
+                <dt class="label">Extern</dt>
+                <dd class="value">{{ totalAnders }}</dd>
             </div>
         </dl>
-        <dl>
-            <div>
+        <dl class="stats-status">
+            <div class="stats-item">
                 <dt>Beschikbaar</dt>
                 <dd>{{ totalBeschikbaar }}</dd>
                 {% assign totalBeschikbaarInPercentage = totalBeschikbaar | times: 100.0 | divided_by: totalItems | round %}
-                <dd>{{ totalBeschikbaarInPercentage }}%</dd>
+                <dd class="stats-percentage">{{ totalBeschikbaarInPercentage }}%</dd>
             </div>
             
-            <div>
-                <dt>In reperatie</dt>
+            <div class="stats-item">
+                <dt>In reparatie</dt>
                 <dd>{{ totalReparatie }}</dd>
                 {% assign totalReparatieInPercentage = totalReparatie | times: 100.0 | divided_by: totalItems | round %}
-                <dd>{{ totalReparatieInPercentage }}%</dd>
+                <dd class="stats-percentage">{{ totalReparatieInPercentage }}%</dd>
             </div>
 
-            <div>
+            <div class="stats-item">
                 <dt>Uitgeleend</dt>
                 <dd>{{ totalUitgeleend }}</dd>
                 {% assign totalUitgeleendInPercentage =  totalUitgeleend | times: 100.0 | divided_by: totalItems | round %}
-                <dd>{{ totalUitgeleendInPercentage }}%</dd>
+                <dd class="stats-percentage">{{ totalUitgeleendInPercentage }}%</dd>
             </div>
         </dl>
     </section>
