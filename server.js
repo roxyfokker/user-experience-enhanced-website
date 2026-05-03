@@ -47,10 +47,8 @@ app.get('/instrumenten', async function (request, response) {
   const instrumentsResponseJSON = await instrumentsResponse.json()
   const allInstruments = instrumentsResponseJSON.data
 
-  response.render('overzicht.liquid', {
-    instruments: instrumentsResponseJSON.data,
-    status: request.query.status || null,
-    totalItems: totalItems
+  response.render('overzicht.liquid',{
+    instruments: instrumentsResponseJSON.data
   });
 });
 

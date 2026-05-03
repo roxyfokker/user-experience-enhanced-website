@@ -162,10 +162,208 @@ main{
     }
 }
 /* ------------ Overview pagina -------------------------*/
+.instrument-overview-main{
+    width: 90vw;
+    margin: auto;
+    h2{
+        color: var(--color-brand-dark);
+    }
+}
+.instrument-nav-panel{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    .zoekbalk {
+        width: 100%;  
+    }
+    .button-box{
+        margin-right: auto;
+        select{
+            padding: 0.7rem;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            cursor: pointer;
+        }
+    }
+    .view-toggle {
+        margin-left: auto;
+        border: none;
+    }
+}
+.table-wrapper{
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    scrollbar-width: thin;
+}
+.instrument-table{
+    border-radius: 0.375em;
+    border: 2px solid var(--color-brand-dark); 
+    border-collapse: separate;
+    border-spacing: 0;
+    box-shadow: 0 3px 6px var(--color-brand-dark);
+    margin: auto;
+    width: 100%;
+    th, td {
+        padding: 0.75rem 1rem;
+        text-align: left;
+        vertical-align: middle;
+        border: 0.5px solid var(--color-brand-light);
+    }
+
+    thead tr {
+        background-color: var(--color-brand-light);
+
+        th {
+            color: var(--color-neutral-darkest);
+            
+            a{
+                svg{
+                    transform: rotate(90deg);
+                    stroke-width: 1.5rem;
+                    width: 1.5rem;
+                    height: 1.5rem;
+                    stroke: var(--color-brand-lightest);
+
+                    .pijl-omlaag, .pijl-omhoog {
+                        stroke-width: 1.5;
+                    }
+                }
+
+                &[data-sort="asc"] .pijl-omlaag {
+                    stroke-width: 2.5;
+                    stroke: var(--color-brand-darkest);
+                }
+
+                &[data-sort="desc"] .pijl-omhoog {
+                    stroke-width: 2.5;
+                    stroke: var(--color-brand-darkest);
+                }
+            }
+        }
+    }
+
+    tbody tr {
+        &:nth-child(odd) {
+            background-color: var(--color-neutral-lightest);
+        }
+
+        &:nth-child(even) {
+            background-color: var(--color-brand-lightest);
+        }
+    }
+}
+/*responsivenes*/
+.instrument-table {
+    th:nth-child(2),
+    th:nth-child(3),
+    th:nth-child(4),
+    th:nth-child(5),
+    th:nth-child(8),
+    td:nth-child(2),
+    td:nth-child(3),
+    td:nth-child(4),
+    td:nth-child(5){
+        display: none;
+    }
+
+    @media (min-width: 500px) {
+        th:nth-child(2),
+        td:nth-child(2) {
+            display: table-cell;
+        }
+    }
+
+    @media (min-width: 700px) {
+        th:nth-child(3),
+        td:nth-child(3) {
+            display: table-cell;
+        }
+    }
+
+    @media (min-width: 800px) {
+        th:nth-child(4),
+        td:nth-child(4) {
+            display: table-cell;
+        }
+    }
+
+    @media (min-width: 900px) {
+        th:nth-child(5),
+        td:nth-child(5) {
+            display: table-cell;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        th:nth-child(7),
+        td:nth-child(7)
+        {
+            display: table-cell;
+        }
+    }
+}
+.label{
+    padding: 0.375em;
+    padding-left: 2.4em;
+    padding-right: 0.5em;
+    border-radius: 0.375em;
+    position: relative;
+    align-items: center;
+    display: inline-flex;
+    &::before{
+        content: "";
+        position: absolute;
+        left: 0.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1.5em;
+        height: 1.5em;
+        border-radius: 50%;
+        z-index: 999;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 60%;
+    }
+}
+.status-available {
+    background-color: var(--color-positive-lightest);  
+    border: 2px solid var(--color-positive-dark); 
+    &:before{
+        background-color: var(--color-positive-light);
+        background-image: url('/icons/available.svg'); 
+    }     
+}
+.status-repair {
+    background-color: var(--color-caution-lightest);
+    border: 2px solid var(--color-caution-dark);  
+    &:before{
+        background-color: var(--color-caution-light);
+        background-image: url('/icons/repair.svg'); 
+    } 
+}
+.status-borrowed {
+    background-color: var(--color-danger-lightest);   
+    border: 2px solid var(--color-danger-dark); 
+    &:before{
+        background-color: var(--color-danger-light);
+        background-image: url('/icons/borrowed.svg');
+    } 
+}
+.status-unknown {
+    background-color: var(--color-neutral-lightest);   
+    border: 2px solid var(--color-neutral-darkest); 
+    &:before{
+        background-color: var(--color-neutral-light);
+        background-image: url('/icons/unknown.svg');
+    } 
+}
 /* ------------ Detail pagina ---------------------------*/
-
 /* ------------ Popup------------------------------------*/
-
 /* ------------ Actie menu ------------------------------*/
 /* ------------ uitlenen --------------------------------*/
 /* ------------ Innemen ---------------------------------*/

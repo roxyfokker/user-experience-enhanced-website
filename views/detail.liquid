@@ -1,22 +1,8 @@
 {% render 'layouts/base.liquid' %}
 {% block content %}
     <main>
-        <section>
-            <h1>{{ instrument.name }}</h1>
-            <p>{{ instrument.serial_number }}</p>
-            <dl>
-                <dt>Merk:</dt>
-                <dd>{{ instruments.brand | default: "Onbekend" }}</dd>
-
-                <dt>Type:</dt>
-                <dd>{{ type | default: "Onbekend"}}</dd>
-
-                <dt>Locatie:</dt>
-                <dd>{{ instruments.storage_room | default: "Onbekend" }}</dd>
-
-                <dt>Eigendom:</dt>
-                <dd>{{ instruments.property | default: "Onbekend" }}</dd>
-            </dl>
-        </section>
+        <article>
+           <h1>{{ instrument.name }}</h1>
+        </article>
     </main>
 {% endblock %}
