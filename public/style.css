@@ -197,23 +197,31 @@ main{
     color: var(--color-brand-dark);
     padding: var(--spacing-md);
     border: solid var(--border-color-brand) var(--border-width-md);
+    padding-bottom: 0;
     h2{
         font-size: var(--font-size-body-md);
+        padding-bottom: var(--spacing-md);
     }
     /*tijdelijk*/
     .table-wrap{
-       background-color: var(--color-brand-lightest); 
-       width: 100%;
-       padding: 1rem 0;
+        background-color: var(--color-brand-lightest); 
+        width: calc(100% + 2 * var(--spacing-md));
+        margin-left: calc(-1 * var(--spacing-md));
+        margin-right: calc(-1 * var(--spacing-md));
+        
+        border-radius: 20px 20px 0 0;
+        padding: var(--spacing-lg);
     }
     table{
         width: 100%;
+        margin-bottom: 0.5rem;
         
         tr{
             display: flex;
             align-items: center;
             justify-content: space-between;
             width: 100%;
+            padding: 0.2em;
             td:nth-child(3){
                 margin-left: auto;
             }
@@ -236,6 +244,9 @@ main{
             font-weight: bold;
 
         }
+    }
+    a{
+        padding-left: 10em;
     }
 }
 /* ------------ Overview pagina -------------------------*/
