@@ -27,18 +27,11 @@
                 <option value="/instrumenten">Geen filters</option>
             </select>
         </div> 
-        
-        <fieldset class="view-toggle">
-            <button class="button button-primary button--list">List</button>
-            <button class="button button-secondary button--grid">Grid</button>
-        </fieldset>
     </section>
 
  
     <section class="instrument-table-section">
         <p>{{ totalItems }} instrumenten gevonden</p>
-
-        <div class="table-wrapper">
             <table class="instrument-table">
                 <thead>
                     <tr>
@@ -83,7 +76,19 @@
                 </thead>
                 <tbody>
                     {% if instruments.size == 0 %}
-                        {% render 'partials/instrument_leeg.liquid', type: type %}
+                        <tr class="empty-row">
+                            <td class="empty-data" colspan="7">
+                                {% if request.params.type != blank %}
+                                    <p>Je hebt nog geen instrumenten toegevoegd</p>
+                                    <p>Begin met het toevoegen van je eerste instrument.</p>
+                                    <button class="primary-button">+ Instrument toevoegen</button>
+                                {% else %}
+                                    <p>Geen instrumenten gevonden</p>
+                                    <p>Er zijn nog geen instrumenten binnen deze categorie. "{{ type }}".</p>
+                                    <a href="/instrumenten" class="secondary-button">Bekijk alle instrumenten</a>
+                                {% endif %}
+                            </td>
+                        </tr>
                     {% else %}
                         {% for instrument in instruments %}
                             <tr id="{{ instrument.key }}">
@@ -127,26 +132,6 @@
                     {% endif %}
                 </tbody>
             </table>
-        </div>
-
-        
-
-
-
-        
-        <nav class="paginering">
-            {% assign cp = currentPage | plus: 0 %}
-            {% for i in pages %}
-                {% assign ip = i | plus: 0 %}
-                {% if ip == cp %}
-                <button class="actief">{{ i }}</button>
-                {% else %}
-                <a href="?page={{ i }}&status={{ status }}&sort={{ sort }}">{{ i }}</a>
-                {% endif %}
-            {% endfor %}
-        </nav>
-
-
     </section>
 
 </main>

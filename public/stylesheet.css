@@ -240,9 +240,6 @@ p{
   margin:                   0 0 1rem 0;
 }
 
-
-
-
 /* button - primary */
 .btn{
   align-items:             center;
@@ -266,9 +263,9 @@ p{
 }
 
 .btn svg {
-  width:            1em;
-  height:           1em;
-  flex-shrink:      0;
+  width:                   1em;
+  height:                  1em;
+  flex-shrink:             0;
 }
 
 .btn:hover {

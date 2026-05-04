@@ -45,7 +45,6 @@ app.get('/instrumenten', async function (request, response) {
   const url = 'https://fdnd-agency.directus.app/items/preludefonds_instruments/?limit=-1'
   const instrumentsResponse = await fetch(url) 
   const instrumentsResponseJSON = await instrumentsResponse.json()
-  const allInstruments = instrumentsResponseJSON.data
 
   response.render('overzicht.liquid',{
     instruments: instrumentsResponseJSON.data
