@@ -12,22 +12,20 @@
         </div>
     {% endif %}
 
-    <section class="instrument-nav-panel">
+    <section class="overview-toolbar">
         <form action="/instrumenten" method="get">
             <div class="searchbar">
                 <input id="zoekbalk" placeholder="zoeken" type="text" name="zoek" value="{{ zoekterm }}">
-                <button></button>
+                <button class="btn"></button>
             </div>
-            <div class="filter">
-                <select name="status" onchange="this.form.submit()">
-                    <option value="">Alle statussen</option>
-                    <option value="Beschikbaar"  {% if status == 'Beschikbaar'  %}selected{% endif %}>Beschikbaar</option>
-                    <option value="Uitgeleend"   {% if status == 'Uitgeleend'   %}selected{% endif %}>Uitgeleend</option>
-                    <option value="In reparatie" {% if status == 'In reparatie' %}selected{% endif %}>In reparatie</option>
-                </select>
-            </div> 
+            <select class="filter" name="status" onchange="this.form.submit()">
+                <option value="">Alle statussen</option>
+                <option value="Beschikbaar"  {% if status == 'Beschikbaar'  %}selected{% endif %}>Beschikbaar</option>
+                <option value="Uitgeleend"   {% if status == 'Uitgeleend'   %}selected{% endif %}>Uitgeleend</option>
+                <option value="In reparatie" {% if status == 'In reparatie' %}selected{% endif %}>In reparatie</option>
+            </select>
         </form>
-        <button>Nieuw instrument toevoegen</button>
+        <button class="btn">Nieuw instrument toevoegen</button>
     </section>
 
  

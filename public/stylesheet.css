@@ -246,8 +246,8 @@ p{
   gap:                     var(--spacing-sm);
   padding:                 var(--spacing-sm) var(--spacing-md);
   font-family:             var(--font-primary);
-  font-size:               var(--font-size-body-md);
-  font-weight:             var(--font-weight-bold);
+  font-size:               var(--font-size-body-sm);
+  font-weight:             var(--font-weight-regular);
   line-height:             1;
   white-space:             nowrap;
   background-color:        var(--color-btn-base);
@@ -255,7 +255,6 @@ p{
   border:                  var(--border-width-md) solid transparent;
   border-radius:           var(--border-radius);
   box-shadow:              var(--shadow-btn-default);
-  cursor:                  pointer;
 
   @media (prefers-reduced-motion: no-preference) {
     .btn { transition: all 150ms ease-out}
@@ -292,4 +291,33 @@ p{
   cursor:                  not-allowed;
   pointer-events:          none;
   box-shadow:              var(--shadow-btn-disabled);
+}
+
+
+.searchbar {
+  display: flex;
+  flex-direction: row;
+  
+  input {
+    border: 0.07rem solid var(--color-brand-darkest);
+    border-top-left-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    padding: var(--spacing-sm);
+    flex: 1;
+    font-size: 1rem;
+  }
+
+  button {
+    background-color: var(--color-brand-darkest);
+    padding: 0.69em 1.8em 0.69em;
+    border: var(--border-width-md) solid var(--color-brand-darkest);
+    border-top-right-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    margin-left: -1px;
+    position: relative;
+  }
 }
