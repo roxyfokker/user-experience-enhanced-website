@@ -23,6 +23,10 @@
                         
                     <img 
                         src="https://fdnd-agency.directus.app/assets/{{ instruments.photo.id }}?width=800&quality=70"
+                        srcset="https://fdnd-agency.directus.app/assets/{{ instruments.photo.id }}?width=400&quality=70 400w,
+                                https://fdnd-agency.directus.app/assets/{{ instruments.photo.id }}?width=800&quality=70 800w,
+                                https://fdnd-agency.directus.app/assets/{{ instruments.photo.id }}?width=1200&quality=70 1200w"
+                        sizes="(max-width: 600px) 400px, (max-width: 1024px) 800px, 1200px"
                         width="{{ instruments.photo.width }}" 
                         height="{{ instruments.photo.height }}"
                         alt="{{ instruments.name }}"
