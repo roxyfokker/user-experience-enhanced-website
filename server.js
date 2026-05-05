@@ -81,7 +81,7 @@ app.get('/instrumenten/preview', async function (request, response) {
 
 
 app.get('/instrumenten/:id', async function (request, response) {
-  const url = 'https://fdnd-agency.directus.app/items/preludefonds_instruments/' + request.params.id + '?fields=*,photo.width,photo.height';
+  const url = 'https://fdnd-agency.directus.app/items/preludefonds_instruments/' + request.params.id + '?fields=*,photo.id,photo.width,photo.height';
   const instrumentsResponse = await fetch(url) 
   const instrumentsResponseJSON = await instrumentsResponse.json()
 
