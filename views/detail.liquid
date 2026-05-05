@@ -2,7 +2,10 @@
 {% block content %}
     <main>
         <article>
-           <h1>{{ instrument.name }}</h1>
+            <section class="hero">
+                <img src="https://fdnd-agency.directus.app/assets/{{ instruments.photo }}" alt="{{ instruments.name }}">
+            </section>
+           <h1>{{ instruments.name }}</h1>
         </article>
     </main>
 {% endblock %}
