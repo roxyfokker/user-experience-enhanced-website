@@ -2,10 +2,11 @@
     <section class="popup-banner">
 
         <div class="plaatje"></div>
-        <div>
+        <div class="text">
             <p>{{ instrument.name }}</p>
             <p>{{ instrument.serial_number | default: 'onbekend'}}</p>
         </div>
+
         <span class="labell
                     {% if status == 'Beschikbaar' %}status-available
                     {% elsif status == 'In reparatie' %}status-repair
@@ -25,15 +26,14 @@
                         Onbekend
                     {% endif %}
         </span>
-
     </section>
 
     <button onclick="document.getElementById('uitlenen-dialog').showModal()">Uitlenen</button>
-    {% render 'partials/_popup-uitlenen.liquid' %}
+        {% render 'partials/_popup-uitlenen.liquid' %}
     <button onclick="document.getElementById('innemen-dialog').showModal()">Innemen</button>
-    {% render 'partials/_popup-innemen.liquid' %}
+        {% render 'partials/_popup-innemen.liquid' %}
     <button onclick="document.getElementById('schade-dialog').showModal()">Schade melden</button>
-    {% render 'partials/_popup-schade-melden.liquid' %}
+        {% render 'partials/_popup-schade-melden.liquid' %}
     <button onclick="document.getElementById('popup-menu').close()">bekijk detials</button>
 </dialog>
 

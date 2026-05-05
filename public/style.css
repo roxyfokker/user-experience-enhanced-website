@@ -521,27 +521,27 @@ picture{
 }
 /* ------------ Popup------------------------------------*/
 dialog{
-    border: var(--border-width-lg);
+    border: solid var(--color-brand-dark) var(--border-width-lg);
+    border-radius: var(--border-radius);
     background-color: var(--color-brand-lightest);
     width: 80vw;
-    img{
-        width: 10vw;
-        aspect-ratio: 1/1;
-    }
-    .popup-header{
-        border-bottom: solid var(--color-brand-dark) 0.1rem;
-        background-color: inherit;
+    margin: auto;
+    padding: var(--spacing-lg);
+    .popup-banner{
+        border: solid var(--color-brand-dark) var(--border-width-md);
+        border-radius: var(--border-radius);
+        padding: var(--spacing-md);
         display: flex;
-        justify-content: space-between;
-        margin-bottom: 1.5rem;
-        .popup-sluiten{
-            background-color: transparent;
-            display: flex;
-            flex-direction: column;
-            border: none;
-            img{
-                height: 1.5rem;
-            }
+        align-items: center;
+        .plaatje{
+            background-color: var(--color-brand-dark);
+            height: 5rem;
+            width: 5rem;
+            border-radius: var(--border-radius);
+            margin-right: 1rem;
+        }
+        span{
+            margin-left: auto;
         }
     }
 }
