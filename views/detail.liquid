@@ -3,7 +3,31 @@
     <main>
         <article>
             <section class="hero">
-                <img src="https://fdnd-agency.directus.app/assets/{{ instruments.photo.id }}" alt="{{ instruments.name }}">
+                {{ instruments.photo.width }}
+           {{ instruments.photo.height }}
+           {{ instruments.name }}
+                <picture>
+                    <source type="image/avif" 
+                        srcset="https://fdnd-agency.directus.app/assets/{{ instruments.photo.id }}?format=avif&width=400&quality=70 400w,
+                                https://fdnd-agency.directus.app/assets/{{ instruments.photo.id }}?format=avif&width=800&quality=70 800w,
+                                https://fdnd-agency.directus.app/assets/{{ instruments.photo.id }}?format=avif&width=1200&quality=70 1200w"
+                        sizes="(max-width: 600px) 400px, (max-width: 1024px) 800px, 1200px"
+                    >
+
+                    <source type="image/webp" 
+                        srcset="https://fdnd-agency.directus.app/assets/{{ instruments.photo.id }}?format=webp&width=400&quality=70 400w,
+                                https://fdnd-agency.directus.app/assets/{{ instruments.photo.id }}?format=webp&width=800&quality=70 800w,
+                                https://fdnd-agency.directus.app/assets/{{ instruments.photo.id }}?format=webp&width=1200&quality=70 1200w"
+                        sizes="(max-width: 600px) 400px, (max-width: 1024px) 800px, 1200px"
+                    >
+                        
+                    <img 
+                        src="https://fdnd-agency.directus.app/assets/{{ instruments.photo.id }}?width=800&quality=70"
+                        width="{{ instruments.photo.width }}" 
+                        height="{{ instruments.photo.height }}"
+                        alt="{{ instruments.name }}"
+                    >
+                </picture>
             </section>
            <h1>{{ instruments.name }}</h1>
         </article>
