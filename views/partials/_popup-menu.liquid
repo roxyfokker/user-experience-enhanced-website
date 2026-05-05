@@ -1,0 +1,40 @@
+<dialog id="popup-menu">
+    <section class="popup-banner">
+
+        <div class="plaatje"></div>
+        <div>
+            <p>{{ instrument.name }}</p>
+            <p>{{ instrument.serial_number | default: 'onbekend'}}</p>
+        </div>
+        <span class="labell
+                    {% if status == 'Beschikbaar' %}status-available
+                    {% elsif status == 'In reparatie' %}status-repair
+                    {% elsif status == 'Uitgeleend' or status == 'In gebruik voor school' %}status-borrowed
+                    {% else %}status-unknown
+                    {% endif %}
+                    ">
+                    {% if status == 'Beschikbaar' %}
+                        Beschikbaar 
+                    {% elsif status == 'In reparatie' %}
+                        In Reparatie 
+                    {% elsif status == 'Uitgeleend' %}
+                        Uitgeleend 
+                    {% elsif status == 'In gebruik voor school' %}
+                        In Gebruik voor school
+                    {% else %}
+                        Onbekend
+                    {% endif %}
+        </span>
+
+    </section>
+
+    <button onclick="document.getElementById('uitlenen-dialog').showModal()">Uitlenen</button>
+    {% render 'partials/_popup-uitlenen.liquid' %}
+    <button onclick="document.getElementById('innemen-dialog').showModal()">Innemen</button>
+    {% render 'partials/_popup-innemen.liquid' %}
+    <button onclick="document.getElementById('schade-dialog').showModal()">Schade melden</button>
+    {% render 'partials/_popup-schade-melden.liquid' %}
+    <button onclick="document.getElementById('popup-menu').close()">bekijk detials</button>
+</dialog>
+
+

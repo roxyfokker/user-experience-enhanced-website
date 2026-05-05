@@ -1,7 +1,10 @@
-{% render 'layouts/base.liquid' %}
+{% render 'layouts/base.liquid'%}
 {% block content %}
     <main>
         <article>
+            <button onclick="document.getElementById('popup-menu').showModal()">Open popupmenu</button>
+            {% render 'partials/_popup-menu.liquid' instrument: instruments %}
+
             <div class="decor-block"></div>
             <section class="instrument-header">
                 <div class="instrument-header-text">

@@ -520,6 +520,32 @@ picture{
     }
 }
 /* ------------ Popup------------------------------------*/
+dialog{
+    border: var(--border-width-lg);
+    background-color: var(--color-brand-lightest);
+    width: 80vw;
+    img{
+        width: 10vw;
+        aspect-ratio: 1/1;
+    }
+    .popup-header{
+        border-bottom: solid var(--color-brand-dark) 0.1rem;
+        background-color: inherit;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+        .popup-sluiten{
+            background-color: transparent;
+            display: flex;
+            flex-direction: column;
+            border: none;
+            img{
+                height: 1.5rem;
+            }
+        }
+    }
+}
+
 /* ------------ Actie menu ------------------------------*/
 /* ------------ uitlenen --------------------------------*/
 /* ------------ Innemen ---------------------------------*/
