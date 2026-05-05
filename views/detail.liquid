@@ -3,16 +3,7 @@
     <main>
         <article>
             <section class="hero">
-                <picture>
-                    <source type="image/avif" srcset="https://fdnd-agency.directus.app/assets/{{ instruments.photo.id }}?format=avif">
-                    <source type="image/webp" srcset="https://fdnd-agency.directus.app/assets/{{ instruments.photo.id }}?format=webp">
-                    <img 
-                        src="https://fdnd-agency.directus.app/assets/{{ instruments.photo.id }}"
-                        width="{{ instruments.photo.width }}" 
-                        height="{{ instruments.photo.height }}"
-                        alt="{{ instruments.name }}"
-                    >
-                </picture>
+                <img src="https://fdnd-agency.directus.app/assets/{{ instruments.photo.id }}" alt="{{ instruments.name }}">
             </section>
            <h1>{{ instruments.name }}</h1>
         </article>
