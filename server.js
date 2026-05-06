@@ -100,6 +100,37 @@ app.get('/activiteiten', async function (request, response) {
 
 
 app.post('/instrumenten', async function (request, response){
+  const key = request.body.name   // "  Gitaar Akoestisch  "
+    .toLowerCase()                // "  gitaar akoestisch  "
+    .trim()                       // "  gitaar akoestisch  "
+    .replace(/\s+/g, '-');        // "  gitaar-akoestisch  "   `\s` betekent een spatie    'g' overal in de tekst
+
+  await fetch('https://fdnd-agency.directus.app/items/preludefonds_instruments/', {
+    method: 'POST',
+    body: JSON.stringify({
+      name: request.body.name,
+      key: key,
+      instrument: request.body.instrument,
+      brand: request.body.brand,
+      serial_number: request.body.serial_number,
+      type: request.body.type,
+      property: request.body.property,
+      storage_room: request.body.storage_room,
+      details: request.body.details,
+      status: request.body.status,
+    }),
+    headers: { 'Content-Type': 'application/json;charset=UTF-8' }
+  });
+
+   await fetch('https://fdnd-agency.directus.app/items/preludefonds_log', {
+    method: 'POST',
+    body: JSON.stringify({
+      type_actie: 'Toevoegen',
+      performed_by: request.body.performed_by || null,
+      note: null,
+    }),
+    headers: { 'Content-Type': 'application/json;charset=UTF-8' }
+  });
 });
 
 app.post('/instrumenten/:id/uitlenen', async function (request, response){

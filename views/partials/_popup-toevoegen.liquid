@@ -1,109 +1,106 @@
-<section class="instrument-toevoegen-popup popup">
-    <div class="popup-header">
-        <h2>Nieuw instrument toevoegen</h2>
-        <button class="popup-sluiten">
-            <img src="/icons/close.svg" alt="">
-            Sluiten
-        </button>
+<dialog id="popup-toevoegen">
+  <section class="popup-header">
+    <h2>Instrument Uitlenen</h2>
+    <button class="popup-sluiten" onclick="document.getElementById('popup-toevoegen').close()"><img src="/assets/icons/close.svg" alt=""></button>
+  </section>
+        
+  <form action="/instrumenten" method="POST" class="instrument-toevoegen-form">
+    <div class="form-melding" id="form-melding" style="display: none;">
+      <p><strong>Controleer de gemarkeerde Velden</strong></p>
+      <p>Vul alle verplichte Velden in om verder te gaan.</p>
     </div>
-        
-    <form action="/instrumenten" method="POST" class="instrument-toevoegen-form">
-        <div class="form-melding" id="form-melding" style="display: none;">
-            <p><strong>Controleer de gemarkeerde Velden</strong></p>
-            <p>Vul alle verplichte Velden in om verder te gaan.</p>
-        </div>
 
-        <label>Naam *
-          <input type="text" name="name" placeholder="bijv. gitaar 02" required>
+    <label>Naam *
+      <input type="text" name="name" placeholder="bijv. gitaar 02" required>
+    </label>
+
+    <label>Merk *
+      <input type="text" name="brand" placeholder="bijv. Fender" required>
+    </label>
+
+    <label>Serienummer *
+      <input type="text" id="serienummer" name="serial_number" placeholder="bijv. 234-567-890" required pattern="\d{3}-\d{3}-\d{3}" title="Voer een serienummer in het formaat 123-456-789">
+    </label>
+
+    <label >Type instrument *
+      <input list="type-instrument" name="type" required placeholder="Kies een type instrument">
+    </label>
+    <datalist id="type-instrument">
+      <option value="Accordeon"></option>
+      <option value="Altsaxofoon"></option>
+      <option value="Baritonsaxofoon"></option>
+      <option value="Basgitaar"></option>
+      <option value="Blokfluit"></option>
+      <option value="Bugel"></option>
+      <option value="Cajon"></option>
+      <option value="Cello"></option>
+      <option value="Darbukha"></option>
+      <option value="Dwarsfluit"></option>
+      <option value="Elektrische gitaar"></option>
+      <option value="Gitaar akoestisch"></option>
+      <option value="Gitaar driekwart"></option>
+      <option value="Harp"></option>
+      <option value="Hobo"></option>
+      <option value="Hoorn"></option>
+      <option value="Keyboard"></option>
+      <option value="Klarinet"></option>
+      <option value="Tenorsaxofoon"></option>
+      <option value="Trombone"></option>
+      <option value="Trompet"></option>
+      <option value="Ukelele"></option>
+      <option value="Viool"></option>
+    </datalist>
+
+    <label>Eigendom van: *
+      <input type="text" name="property" placeholder="bijv. preludefonds" required>
+    </label>
+
+    <label>Dit instrument hoort thuis in:
+      <input list="storage-room-list" name="storage_room" required placeholder="Kies een ruimte">
+    </label>
+    <datalist id="storage-room-list">
+      <option value="Instrumentenhok tweede verdieping"></option>
+      <option value="Studio 0.02"></option>
+      <option value="Studio 0.03"></option>
+      <option value="Studio 0.04"></option>
+      <option value="Studio 2.01"></option>
+      <option value="Studio 2.02"></option>
+      <option value="Studio 2.03"></option>
+      <option value="Studio 2.04"></option>
+      <option value="Studio 2.05"></option>
+      <option value="Studio 2.06"></option>
+      <option value="Studio 2.07"></option>
+      <option value="Zaal A"></option>
+      <option value="Zaal B"></option>
+    </datalist>
+
+    <label>Toegevoegd door: *
+      <input type="text" name="performed_by" placeholder="bijv. Jan de Vries" required>
+    </label>
+
+    <label for="beschrijving">Beschijving
+      <textarea name="details" placeholder="details van het instrument..."></textarea>
+    </label>
+
+    <fieldset>
+      <legend>Foto instrument</legend>
+      <div class="upload-box">
+        <label for="foto">
+          <span>+ Foto uploaden</span>
+          <span>JPG, PNG of WEBP</span>
         </label>
+        <input type="file" name="photo" accept=".jpg,.png,.webp" hidden disabled>
+      </div>
+    </fieldset>
 
-        <label>Instrument *
-          <input type="text" name="instrument" placeholder="gitaar akoestisch" required>
-        </label>
-        
-        <label>Merk *
-          <input type="text" name="brand" placeholder="bijv. Fender" required>
-        </label>
+    <input type="hidden" name="status" value="Beschikbaar">
 
-        <label>Serienummer *
-          <input type="text" id="serienummer" name="serial_number" placeholder="bijv. 234-567-890" required pattern="\d{3}-\d{3}-\d{3}" title="Voer een serienummer in het formaat 123-456-789">
-        </label>
+    <div class="btn-box">
+      <button class="btn btn-secondary" type="button">Annuleren</button>
+      <button class="btn btn-primary" type="submit">Opslaan</button>
+    </div>
+    
 
-        <label >Categorie instrument *
-          <input list="type-instrument" name="type">
-        </label>
-        <datalist id="type-instrument">
-          <option value="Accordeon"></option>
-          <option value="Altsaxofoon"></option>
-          <option value="Baritonsaxofoon"></option>
-          <option value="Basgitaar"></option>
-          <option value="Blokfluit"></option>
-          <option value="Bugel"></option>
-          <option value="Cajon"></option>
-          <option value="Cello"></option>
-          <option value="Darbukha"></option>
-          <option value="Dwarsfluit"></option>
-          <option value="Elektrische gitaar"></option>
-          <option value="Gitaar akoestisch"></option>
-          <option value="Gitaar driekwart"></option>
-          <option value="Harp"></option>
-          <option value="Hobo"></option>
-          <option value="Hoorn"></option>
-          <option value="Keyboard"></option>
-          <option value="Klarinet"></option>
-          <option value="Tenorsaxofoon"></option>
-          <option value="Trombone"></option>
-          <option value="Trompet"></option>
-          <option value="Ukelele"></option>
-          <option value="Viool"></option>
-        </datalist>
+  </form>
+</dialog>
 
-        <label>Eigendom van: *
-          <input type="text" name="property" placeholder="bijv. preludefonds" required>
-        </label>
-
-        <label>Dit instrument hoort thuis in:
-          <input list="storage-room-list" name="storage_room" required>
-        </label>
-        <datalist id="storage-room-list">
-          <option value="Instrumentenhok tweede verdieping"></option>
-          <option value="Studio 0.02"></option>
-          <option value="Studio 0.03"></option>
-          <option value="Studio 0.04"></option>
-          <option value="Studio 2.01"></option>
-          <option value="Studio 2.02"></option>
-          <option value="Studio 2.03"></option>
-          <option value="Studio 2.04"></option>
-          <option value="Studio 2.05"></option>
-          <option value="Studio 2.06"></option>
-          <option value="Studio 2.07"></option>
-          <option value="Zaal A"></option>
-          <option value="Zaal B"></option>
-        </datalist>
-
-        <label for="beschrijving">Beschijving
-          <textarea name="details" placeholder="details van het instrument..."></textarea>
-        </label>
-
-        <fieldset>
-            <legend>Foto instrument</legend>
-
-            <div class="upload-box">
-              <label for="foto">
-                <span>+ Foto uploaden</span>
-                <span>JPG, PNG of WEBP</span>
-              </label>
-
-              <input type="file" name="photo" accept=".jpg,.png,.webp" hidden disabled>
-            </div>
-        </fieldset>
-
-        <input type="hidden" name="status" value="Beschikbaar">
-
-        <div class="knoppen-box">
-            <button class="btn btn-primary" type="button">Annuleren</button>
-            <button class="btn btn-secondary" type="submit">Opslaan</button>
-        </div>
-
-    </form>
-</section>

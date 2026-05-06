@@ -25,7 +25,8 @@
                     <option value="In reparatie" {% if status == 'In reparatie' %}selected{% endif %}>In reparatie</option>
                 </select>
             </form>
-            <button class="btn">Nieuw instrument toevoegen</button>
+            <button class="btn" onclick="document.getElementById('popup-toevoegen').showModal()">Nieuw instrument toevoegen</button>
+            {% render 'partials/_popup-toevoegen.liquid' %}
         </section>
 
     
