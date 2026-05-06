@@ -522,7 +522,7 @@ picture{
 /* ------------ Popup------------------------------------*/
 dialog{
     border: solid var(--color-brand-dark) var(--border-width-lg);
-    border-radius: var(--border-radius-lg);
+    border-radius: var(--border-radius-md);
     background-color: var(--color-neutral-surface);
     width: 80vw;
     margin: auto;
