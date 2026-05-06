@@ -592,24 +592,34 @@ picture{
     }
 }
 /* ------------ Popup------------------------------------*/
-dialog{
-    border: solid var(--color-brand-dark) var(--border-width-lg);
-    border-radius: var(--border-radius-md);
-    background-color: var(--color-neutral-surface);
-    align-items: flex-end;
+dialog {
+    /* Box model */
     width: 80vw;
     margin: auto;
-    padding: var(--spacing-xl);
-    background-color: var(--color-brand-lightest);
-    .popup-header{
+    padding: var(--spacing-2xl);
+    background-color: var(--color-neutral-surface);
+    border: solid var(--color-brand-dark) var(--border-width-lg);
+    border-radius: var(--border-radius-md);
+    align-items: flex-end;
+
+    @media (min-width: 1000px) { width: 75vw; }
+    @media (min-width: 1200px) { width: 60vw; }
+    @media (min-width: 1400px) { width: 50vw; }
+
+    &::backdrop {
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+    }
+
+    .popup-header {
+        padding: var(--spacing-sm) var(--spacing-sm) 0;
+        margin-bottom: var(--spacing-lg);
+        border-bottom: solid var(--border-width-md) var(--color-brand-darkest);
         display: flex;
         justify-content: space-between;
-        border-bottom: solid var(--border-width-md);
-        border-color: var(--color-brand-darkest);
-        margin-bottom: var(--spacing-md);
-        padding: var(--spacing-sm);
-        padding-bottom: 0;
-        .popup-sluiten{
+        text-align: left;
+
+        .popup-sluiten {
             display: flex;
             background-color: inherit;
             border: none;
@@ -618,49 +628,45 @@ dialog{
             scale: 1.1;
         }
     }
-    
-    .popup-banner{
+
+    .popup-banner {
+        padding: var(--spacing-md);
+        background-color: var(--color-brand-lightest);
         border: solid var(--color-brand-darkest) var(--border-width-md);
         border-radius: var(--border-radius);
-        padding: var(--spacing-md);
-        background-color: var(--color-neutral-surface);
-
         display: flex;
         flex-direction: column;
-        text-align: center;
         align-items: center;
-        
-        .banner-picture{
-            background-color: var(--color-brand-mid);
-            height: 5rem;
+        text-align: center;
+
+        .banner-picture {
             width: 5rem;
+            height: 5rem;
+            background-color: var(--color-brand-mid);
             border-radius: var(--border-radius);
         }
-        .banner-text{
-            p{
+
+        .banner-text {
+            p {
                 margin: 0;
-                &:first-of-type{
-                    font-weight: var(--font-weight-regular);
-                }
-                &:last-of-type{
+                &:first-of-type { font-weight: var(--font-weight-regular); }
+                &:last-of-type {
                     font-weight: var(--font-weight-light);
                     font-size: var(--font-size-body-xs);
                 }
             }
         }
-        .status-label{
+
+        .status-label {
             margin-top: var(--spacing-sm);
         }
 
         @media (min-width: 600px) {
             flex-direction: row;
             text-align: left;
-            .banner-text{
-                margin-left: var(--spacing-sm);
-            }
-            .status-label{
-                margin-left: auto;
-            }
+
+            .banner-text { margin-left: var(--spacing-sm); }
+            .status-label { margin-left: auto; }
         }
     }
 }
@@ -669,12 +675,24 @@ dialog{
     .action-btns{
         display: flex;
         flex-direction: column;
+        
         button{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            box-shadow: none;
+            svg{
+                margin-right: var(--spacing-sm);
+            }
             margin-top: var(--spacing-md);
+            font-size: var(--font-size-body-md);
+            padding: var(--spacing-md);
+            font-weight: var(--font-weight-regular);
         }
     }
 }
 /* ------------ uitlenen --------------------------------*/
+
 /* ------------ Innemen ---------------------------------*/
 /* ------------ scahde melden ---------------------------*/
 /*partial */

@@ -6,7 +6,7 @@
 
             <div class="decor-block">
                 <button class="tijdelijke-oplossing" onclick="document.getElementById('popup-menu').showModal()">Open Actiemenu</button>
-                    {% render 'partials/_popup-menu.liquid' instrument: instruments %}
+                {% render 'partials/_popup-menu.liquid' instrument: instruments status: status %}
             </div>
 
             <section class="instrument-header">

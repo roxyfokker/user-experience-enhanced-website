@@ -1,3 +1,40 @@
 <dialog id="schade-dialog">
+    <section class="popup-header">
+        <h2>Schade melden</h2>
+        <button class="popup-sluiten" onclick="document.getElementById('popup-menu').close()"><img src="/assets/icons/close.svg" alt=""></button>
+    </section>
+    <section class="popup-banner">
+        {% comment %} slechte naam/div word picture {% endcomment %}
+        <div class="banner-picture"></div>
+        <div class="banner-text">
+            <p>{{ instrument.name }}</p>
+            <p>{{ instrument.serial_number | default: 'onbekend'}}</p>
+        </div>
 
+        <span class="status-label
+                    {% if status == 'Beschikbaar' %}status-available
+                    {% elsif status == 'In reparatie' %}status-repair
+                    {% elsif status == 'Uitgeleend' or status == 'In gebruik voor school' %}status-borrowed
+                    {% else %}status-unknown
+                    {% endif %}
+                    ">
+                    {% if status == 'Beschikbaar' %}
+                        Beschikbaar 
+                    {% elsif status == 'In reparatie' %}
+                        In Reparatie 
+                    {% elsif status == 'Uitgeleend' %}
+                        Uitgeleend 
+                    {% elsif status == 'In gebruik voor school' %}
+                        In Gebruik voor school
+                    {% else %}
+                        Onbekend
+                    {% endif %}
+        </span>
+    </section>
+
+    <form action="/instrumenten/{{ instrument.id }}/schade" method="POST">
+
+        <button class="btn btn-secondary" onclick="document.getElementById('schade-dialog').close()">Annuleren</button>
+        <button class="btn btn-primary" type="submit">Schade melden</button>
+    </form>
 </dialog>

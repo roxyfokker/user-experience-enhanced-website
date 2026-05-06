@@ -254,6 +254,7 @@ p{
   border:                  var(--border-width-md) solid transparent;
   border-radius:           var(--border-radius);
   box-shadow:              var(--shadow-btn-default);
+  cursor:                  pointer;
 
   @media (prefers-reduced-motion: no-preference) {
     .btn { transition: all 200ms ease-out}
@@ -332,5 +333,115 @@ p{
     border-top-left-radius: 0;
     margin-left: -1px;
     position: relative;
+  }
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  font-style: var(--font-serif);
+  label{
+    color: var(--color-primary);
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.2rem;
+    input{
+      padding: 0.6rem 0.8rem;
+      font-size: 1rem;
+      color: var(--color-primary);
+      border: solid var(--color-primary) 0.05rem;
+      border-radius: 0.375rem;
+      &::placeholder{  /* ::placeholder — Baseline: WIDELY AVAILABLE */
+        color: var(--color-neutral-500);
+        font-size: 1rem;
+      }
+      &:hover, &:focus{ /*:focus — Baseline: WIDELY AVAILABLE*/
+        outline: 0.09rem solid var(--color-primary);
+      }
+      &:valid{ /* :valid — Baseline: WIDELY AVAILABLE */
+        background-color: var(--color-primary-bg);
+      }
+      &:required:invalid:not(:placeholder-shown){
+        border:solid 0.15rem var(--color-status-borrowed-hex);
+        background-color: var(--color-status-borrowed-bg);
+      }
+    }
+  }
+  @supports(selector(:has(*))) { /*  :has() is Baseline NEWLY AVAILABLE */
+    label:has(input:required:invalid:not(:placeholder-shown)) {
+      color: var(--color-status-borrowed-hex);
+    }  
+  }
+}
+form{
+  select{
+    padding: 0.6rem 0.8rem;
+    font-size: 1rem;
+    color: var(--color-primary);
+    border: solid var(--color-primary) 0.05rem;
+    border-radius: 0.375rem;
+    
+    option{
+      color: var(--color-primary);
+      position: relative;
+    }
+
+    &:hover, &:focus{
+      outline: 0.09rem solid var(--color-primary);
+    }
+    
+    &:invalid {
+      color: var(--color-neutral-500);
+      background-color: inherit; /* inherit — Baseline: WIDELY AVAILABLE */
+    }
+    &:valid {
+      background-color: var(--color-primary-bg);
+    }
+  }
+}
+form{
+  textarea{
+    padding: 0.6rem 0.8rem;
+    font-size: inherit;
+    border: solid var(--color-primary) 0.05rem;
+    border-radius: 0.375rem;
+    &::placeholder{
+      font-family: var(--font-sans);  
+    }
+    &:hover, &:focus{
+      outline: 0.09rem solid var(--color-primary);
+    }
+  }
+}
+form{
+  fieldset{
+    border: none;
+    padding-bottom: 1.5rem;
+    legend{
+      color: var(--color-primary);
+      font-size: 1.2rem;
+      padding-bottom: 0.2rem;
+    }
+    .upload-box{
+      background-color: var(--color-primary-bg);
+      border: 0.15rem dashed var(--color-primary);
+      border-radius: 0.375rem;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      padding-bottom: 0.5rem;
+      span{
+        color: var(--color-primary-border);
+        font-size: 0.8rem;
+      }
+
+      &:hover {
+        border-color: var(--color-primary-hover, #9b59b6);
+        outline: 0.2rem;
+        cursor: pointer;
+      }
+    }
   }
 }

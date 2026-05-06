@@ -30,38 +30,56 @@
         </label>
 
         <label >Categorie instrument *
-          <select name="type" required>
-            <option value="" selected>-- Kies categorie --</option>
-            <option value="snaarinstrument">Snaarinstrument</option>
-            <option value="blaasinstrument">Blaasinstrument</option>
-            <option value="toetsinstrument">Toetsinstrument</option>
-            <option value="slagwerk">Slagwerk</option>
-            <option value="overig">Overig</option>
-          </select>
+          <input list="type-instrument" name="type">
         </label>
+        <datalist id="type-instrument">
+          <option value="Accordeon"></option>
+          <option value="Altsaxofoon"></option>
+          <option value="Baritonsaxofoon"></option>
+          <option value="Basgitaar"></option>
+          <option value="Blokfluit"></option>
+          <option value="Bugel"></option>
+          <option value="Cajon"></option>
+          <option value="Cello"></option>
+          <option value="Darbukha"></option>
+          <option value="Dwarsfluit"></option>
+          <option value="Elektrische gitaar"></option>
+          <option value="Gitaar akoestisch"></option>
+          <option value="Gitaar driekwart"></option>
+          <option value="Harp"></option>
+          <option value="Hobo"></option>
+          <option value="Hoorn"></option>
+          <option value="Keyboard"></option>
+          <option value="Klarinet"></option>
+          <option value="Tenorsaxofoon"></option>
+          <option value="Trombone"></option>
+          <option value="Trompet"></option>
+          <option value="Ukelele"></option>
+          <option value="Viool"></option>
+        </datalist>
 
         <label>Eigendom van: *
           <input type="text" name="property" placeholder="bijv. preludefonds" required>
         </label>
 
-        <label>Dit instrument hoort thuis in: 
-          <select name="storage_room" required>
-            <option value="" selected>-- Kies locatie --</option>
-            <option value="Instrumentenhok tweede verdieping">Instrumentenhok tweede verdieping</option>
-            <option value="Studio 0.02">Studio 0.02</option>
-            <option value="Studio 0.03">Studio 0.03</option>
-            <option value="Studio 0.04">Studio 0.04</option>
-            <option value="Zaal A">Zaal A</option>
-            <option value="Zaal B">Zaal B</option>
-            <option value="Studio 2.01">Studio 2.01</option>
-            <option value="Studio 2.02">Studio 2.02</option>
-            <option value="Studio 2.03">Studio 2.03</option>
-            <option value="Studio 2.04">Studio 2.04</option>
-            <option value="Studio 2.05">Studio 2.05</option>
-            <option value="Studio 2.06">Studio 2.06</option>
-            <option value="Studio 2.07">Studio 2.07</option>
-          </select>
+        <label>Dit instrument hoort thuis in:
+          <input list="storage-room-list" name="storage_room" required>
         </label>
+        <datalist id="storage-room-list">
+          <option value="Instrumentenhok tweede verdieping"></option>
+          <option value="Studio 0.02"></option>
+          <option value="Studio 0.03"></option>
+          <option value="Studio 0.04"></option>
+          <option value="Studio 2.01"></option>
+          <option value="Studio 2.02"></option>
+          <option value="Studio 2.03"></option>
+          <option value="Studio 2.04"></option>
+          <option value="Studio 2.05"></option>
+          <option value="Studio 2.06"></option>
+          <option value="Studio 2.07"></option>
+          <option value="Zaal A"></option>
+          <option value="Zaal B"></option>
+        </datalist>
 
         <label for="beschrijving">Beschijving
           <textarea name="details" placeholder="details van het instrument..."></textarea>
@@ -83,8 +101,8 @@
         <input type="hidden" name="status" value="Beschikbaar">
 
         <div class="knoppen-box">
-            <button type="button" class="button-secondary annuleren">Annuleren</button>
-            <button type="submit" class="button-primary" >Opslaan</button>
+            <button class="btn btn-primary" type="button">Annuleren</button>
+            <button class="btn btn-secondary" type="submit">Opslaan</button>
         </div>
 
     </form>
