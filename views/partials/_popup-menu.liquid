@@ -1,13 +1,14 @@
 <dialog id="popup-menu">
     <section class="popup-banner">
 
+        {% comment %} slechte naam/div word picture {% endcomment %}
         <div class="plaatje"></div>
         <div class="text">
             <p>{{ instrument.name }}</p>
             <p>{{ instrument.serial_number | default: 'onbekend'}}</p>
         </div>
 
-        <span class="labell
+        <span class="status-label
                     {% if status == 'Beschikbaar' %}status-available
                     {% elsif status == 'In reparatie' %}status-repair
                     {% elsif status == 'Uitgeleend' or status == 'In gebruik voor school' %}status-borrowed

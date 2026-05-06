@@ -530,19 +530,22 @@ dialog{
     background-color: var(--color-brand-lightest);
     
     .popup-banner{
-        border: solid var(--color-brand-dark) var(--border-width-md);
+        border: solid var(--color-brand-darkest) var(--border-width-md);
         border-radius: var(--border-radius);
         padding: var(--spacing-md);
-        display: flex;
-        align-items: center;
         background-color: var(--color-neutral-surface);
 
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        
+        /* slechte naam word picture */
         .plaatje{
             background-color: var(--color-brand-mid);
             height: 5rem;
             width: 5rem;
             border-radius: var(--border-radius);
-            margin-right: 1rem;
         }
         .text{
             p{
@@ -556,10 +559,25 @@ dialog{
                 }
             }
         }
-        span{
-            margin-left: auto;
+        .status-label{
+            margin-top: var(--spacing-sm);
+        }
+
+        @media (min-width: 600px) {
+            flex-direction: row;
+            text-align: left;
+            .text{
+                margin-left: var(--spacing-sm);
+            }
+            .status-label{
+                margin-left: auto;
+            }
         }
     }
+}
+
+/* ------------ Actie menu ------------------------------*/
+#popup-menu{
     .action-btns{
         display: flex;
         flex-direction: column;
@@ -568,8 +586,6 @@ dialog{
         }
     }
 }
-
-/* ------------ Actie menu ------------------------------*/
 /* ------------ uitlenen --------------------------------*/
 /* ------------ Innemen ---------------------------------*/
 /* ------------ scahde melden ---------------------------*/
