@@ -35,9 +35,16 @@
 
     <form action="/instrumenten/{{ instrument.id }}/uitlenen" method="POST">
 
+        <input type="hidden" name="status" value="Uitgeleend">
+        <input type="hidden" name="rented_from" value="{{ 'now' | date: '%Y-%m-%dT%H:%M:%S' }}">
+
+        <label>Uitgeleend aan: *
+            <input type="text" name="student_name" placeholder="bijv. Jan de Vries" required>
+        </label>
 
         <button class="btn btn-secondary" onclick="document.getElementById('uitlenen-dialog').close()">Annuleren</button>
         <button class="btn btn-primary" type="submit">Instrument Uitlenen</button>
+
     </form>
 
 </dialog>
