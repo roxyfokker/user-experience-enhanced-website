@@ -90,9 +90,7 @@ app.get('/instrumenten/:id', async function (request, response) {
 
   response.render('detail.liquid', {
     instruments: instrumentsResponseJSON.data,
-    type: request.query.type || '',
-    actie:request.query.action || null,
-    status: request.query.status || null
+    status: instrumentsResponseJSON.data.status
   });
 });
 

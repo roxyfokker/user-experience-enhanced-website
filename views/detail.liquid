@@ -1,17 +1,20 @@
 {% render 'layouts/base.liquid'%}
 {% block content %}
     <main>
-        <article>
-            <button onclick="document.getElementById('popup-menu').showModal()">Open popupmenu</button>
-            {% render 'partials/_popup-menu.liquid' instrument: instruments %}
+        <article class="instrument-detail">
+            
 
-            <div class="decor-block"></div>
+            <div class="decor-block">
+                <button class="tijdelijke-oplossing" onclick="document.getElementById('popup-menu').showModal()">Open Actiemenu</button>
+                    {% render 'partials/_popup-menu.liquid' instrument: instruments %}
+            </div>
+
             <section class="instrument-header">
                 <div class="instrument-header-text">
                     <h1>{{ instruments.name }}</h1>
                     <p>{{ instruments.serial_number | default: 'Onbekend' }}</p>
                 </div>
-                <span class="labell
+                <span class="status-label
                     {% if status == 'Beschikbaar' %}status-available
                     {% elsif status == 'In reparatie' %}status-repair
                     {% elsif status == 'Uitgeleend' or status == 'In gebruik voor school' %}status-borrowed

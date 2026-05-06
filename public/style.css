@@ -435,13 +435,23 @@ main{
     background-color: var(--color-brand-lighter);
     border-bottom: solid var(--border-width-md) var(--color-brand-darkest);
     width: 100%;
-    height: 50vw;
+    height: 35vw;
     margin-bottom: var(--spacing-md);
     border-radius: var(--border-radius);
+    text-align: right;
+    .tijdelijke-oplossing{
+        background-color: inherit;
+        border: none;
+        cursor: pointer;
+        color: var(--color-brand-dark);
+    }
 }
 .instrument-header{
     display: flex;
     justify-content: space-between;
+    span{
+        align-self: flex-start;
+    }
     .instrument-header-text{
         h1{
             font-weight: var(--font-weight-regular);
@@ -456,6 +466,11 @@ picture{
     display: block;
     width: 100%;
     margin-bottom: var(--spacing-md);
+    background-color: var(--color-brand-lighter);
+    color: var(--color-brand-dark);
+    text-align: end;
+    font-size: var(--font-size-body-sm);
+    text-decoration: var(--color-brand-dark);
     img {
         width: 100%;
         height: 200px;
