@@ -311,9 +311,10 @@ p{
 .searchbar {
   display: flex;
   flex-direction: row;
+  margin-bottom: var(--spacing-sm);
   
   input {
-    border: var(--font-size-body-xs) solid var(--color-brand-darkest);
+    border: var(--border-width-md) solid var(--color-brand-darkest);
     border-top-left-radius: var(--border-radius);
     border-bottom-left-radius: var(--border-radius);
     border-bottom-right-radius: 0;
@@ -325,14 +326,18 @@ p{
 
   button {
     background-color: var(--color-brand-darkest);
-    padding: 0.69em 1.8em 0.69em;
-    border: var(--border-width-md) solid var(--color-brand-darkest);
+    padding: 0.69em 1.8em 0.6em;
+    border: var(--border-width-sm) solid var(--color-brand-darkest);
     border-top-right-radius: var(--border-radius);
     border-bottom-right-radius: var(--border-radius);
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
     margin-left: -1px;
     position: relative;
+    color: var(--color-neutral-surface);
+    svg{
+      scale: 1.15;
+    }
   }
 }
 

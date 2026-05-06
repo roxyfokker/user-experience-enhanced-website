@@ -16,16 +16,53 @@
             <form action="/instrumenten" method="get">
                 <div class="searchbar">
                     <input id="zoekbalk" placeholder="zoeken" type="text" name="zoek" value="{{ zoekterm }}">
-                    <button class="btn"></button>
+                    <button class="btn">
+                        <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 6.52632C1 7.25204 1.14911 7.97066 1.43881 8.64115C1.72852 9.31163 2.15314 9.92084 2.68844 10.434C3.22375 10.9472 3.85924 11.3542 4.55865 11.632C5.25805 11.9097 6.00767 12.0526 6.76471 12.0526C7.52174 12.0526 8.27136 11.9097 8.97076 11.632C9.67017 11.3542 10.3057 10.9472 10.841 10.434C11.3763 9.92084 11.8009 9.31163 12.0906 8.64115C12.3803 7.97066 12.5294 7.25204 12.5294 6.52632C12.5294 5.80059 12.3803 5.08197 12.0906 4.41149C11.8009 3.741 11.3763 3.13179 10.841 2.61862C10.3057 2.10545 9.67017 1.69839 8.97076 1.42067C8.27136 1.14294 7.52174 1 6.76471 1C6.00767 1 5.25805 1.14294 4.55865 1.42067C3.85924 1.69839 3.22375 2.10545 2.68844 2.61862C2.15314 3.13179 1.72852 3.741 1.43881 4.41149C1.14911 5.08197 1 5.80059 1 6.52632Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M15 16L10.0588 11.2632" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
                 </div>
-                <select class="filter" name="status" onchange="this.form.submit()">
-                    <option value="">Alle statussen</option>
-                    <option value="Beschikbaar"  {% if status == 'Beschikbaar'  %}selected{% endif %}>Beschikbaar</option>
-                    <option value="Uitgeleend"   {% if status == 'Uitgeleend'   %}selected{% endif %}>Uitgeleend</option>
-                    <option value="In reparatie" {% if status == 'In reparatie' %}selected{% endif %}>In reparatie</option>
-                </select>
+                <section class="filter-section">
+                    <p>Filteren op:</p>
+                    <div class="selects">
+                        <select class="filter-status" name="status" onchange="this.form.submit()">
+                            <option value="">--Status--</option>
+                            <option value="Beschikbaar"  {% if status == 'Beschikbaar'  %}selected{% endif %}>Beschikbaar</option>
+                            <option value="Uitgeleend"   {% if status == 'Uitgeleend'   %}selected{% endif %}>Uitgeleend</option>
+                            <option value="In reparatie" {% if status == 'In reparatie' %}selected{% endif %}>In reparatie</option>
+                        </select>
+                        <select class="filter-type" name="type" onchange="this.form.submit()">
+                            <option value="">--type--</option>
+                            <option value="Accordeon">Accordeon</option>
+                            <option value="Altsaxofoon">Altsaxofoon</option>
+                            <option value="Baritonsaxofoon">Baritonsaxofoon</option>
+                            <option value="Basgitaar">Basgitaar</option>
+                            <option value="Blokfluit">Blokfluit</option>
+                            <option value="Bugel">Bugel</option>
+                            <option value="Cajon">Cajon</option>
+                            <option value="Cello">Cello</option>
+                            <option value="Darbukha">Darbukha</option>
+                            <option value="Dwarsfluit">Dwarsfluit</option>
+                            <option value="Elektrische gitaar">Elektrische gitaar</option>
+                            <option value="Gitaar akoestisch">Gitaar akoestisch</option>
+                            <option value="Gitaar driekwart">Gitaar driekwart</option>
+                            <option value="Harp">Harp</option>
+                            <option value="Hobo">Hobo</option>
+                            <option value="Hoorn">Hoorn</option>
+                            <option value="Keyboard">Keyboard</option>
+                            <option value="Klarinet">Klarinet</option>
+                            <option value="Tenorsaxofoon">Tenorsaxofoon</option>
+                            <option value="Trombone">Trombone</option>
+                            <option value="Trompet">Trompet</option>
+                            <option value="Ukelele">Ukelele</option>
+                            <option value="Viool">Viool</option>
+                        </select>
+                    </div>
+                </section>
+                
             </form>
-            <button class="btn" onclick="document.getElementById('popup-toevoegen').showModal()">Nieuw instrument toevoegen</button>
+            <button class="btn btn-primary btn-toevoegen" onclick="document.getElementById('popup-toevoegen').showModal()">Nieuw instrument toevoegen</button>
             {% render 'partials/_popup-toevoegen.liquid' %}
         </section>
 
