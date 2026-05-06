@@ -1,9 +1,15 @@
 <dialog id="popup-menu">
+    <section class="popup-header">
+        <h2>Wat wil je met het isntrument doen ?</h2>
+        <button class="popup-sluiten" onclick="document.getElementById('popup-menu').close()">
+            <img src="/assets/icons/close.svg" alt="">
+            Sluiten
+        </button>
+    </section>
     <section class="popup-banner">
-
         {% comment %} slechte naam/div word picture {% endcomment %}
-        <div class="plaatje"></div>
-        <div class="text">
+        <div class="banner-picture"></div>
+        <div class="banner-text">
             <p>{{ instrument.name }}</p>
             <p>{{ instrument.serial_number | default: 'onbekend'}}</p>
         </div>

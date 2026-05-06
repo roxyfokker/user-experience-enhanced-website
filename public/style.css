@@ -528,6 +528,25 @@ dialog{
     margin: auto;
     padding: var(--spacing-xl);
     background-color: var(--color-brand-lightest);
+    .popup-header{
+        display: flex;
+        justify-content: space-between;
+        border-bottom: solid var(--border-width-md);
+        border-color: var(--color-brand-darkest);
+        margin-bottom: var(--spacing-md);
+        padding: var(--spacing-sm);
+        .popup-sluiten{
+            display: flex;
+            background-color: inherit;
+            border: none;
+            flex-direction: column;  
+            font-size: var(--font-size-body-sm);
+            cursor: pointer;
+            img{
+                scale: 0.5;
+            }
+        }
+    }
     
     .popup-banner{
         border: solid var(--color-brand-darkest) var(--border-width-md);
@@ -540,14 +559,13 @@ dialog{
         text-align: center;
         align-items: center;
         
-        /* slechte naam word picture */
-        .plaatje{
+        .banner-picture{
             background-color: var(--color-brand-mid);
             height: 5rem;
             width: 5rem;
             border-radius: var(--border-radius);
         }
-        .text{
+        .banner-text{
             p{
                 margin: 0;
                 &:first-of-type{
@@ -566,7 +584,7 @@ dialog{
         @media (min-width: 600px) {
             flex-direction: row;
             text-align: left;
-            .text{
+            .banner-text{
                 margin-left: var(--spacing-sm);
             }
             .status-label{
