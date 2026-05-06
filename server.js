@@ -103,12 +103,50 @@ app.post('/instrumenten', async function (request, response){
 });
 
 app.post('/instrumenten/:id/uitlenen', async function (request, response){
+  const id = request.params.id;
+
+  await fetch('https://fdnd-agency.directus.app/items/preludefonds_instruments/' + id, {
+    method: 'PATCH',
+    body: JSON.stringify({
+      status: request.body.status,
+      student_name: request.body.student_name,
+      rented_from: request.body.rented_from,
+    }),
+    headers: { 'Content-Type': 'application/json;charset=UTF-8' }
+  });
+
+  response.redirect(303, '/instrumenten/' + id);
 });
 
 app.post('/instrumenten/:id/innemen', async function (request, response){
+  const id = request.params.id;
+
+  await fetch('https://fdnd-agency.directus.app/items/preludefonds_instruments/' + id, {
+    method: 'PATCH',
+    body: JSON.stringify({
+      status: request.body.status,
+      student_name: null,
+      rented_from: null,
+    }),
+    headers: { 'Content-Type': 'application/json;charset=UTF-8' }
+  });
+
+  response.redirect(303, '/instrumenten/' + id);
 });
 
 app.post('/instrumenten/:id/schade', async function (request, response){
+  const id = request.params.id;
+
+  await fetch('https://fdnd-agency.directus.app/items/preludefonds_instruments/' + id, {
+    method: 'PATCH',
+    body: JSON.stringify({
+      status: request.body.status,
+      details: request.body.details,
+    }),
+    headers: { 'Content-Type': 'application/json;charset=UTF-8' }
+  });
+
+  response.redirect(303, '/instrumenten/' + id);
 });
 
 /*
