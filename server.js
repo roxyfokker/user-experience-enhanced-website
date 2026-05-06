@@ -69,10 +69,13 @@ app.get('/instrumenten', async function (request, response) {
 });
 
 app.get('/instrumenten/preview', async function (request, response) {
-  const url = 'https://fdnd-agency.directus.app/items/preludefonds_instruments/?limit=-1'
+  const params = new URLSearchParams();
+  params.append('limit', '-1');
+  params.append('sort', request.query.sort || '-id');
+
+  const url = `https://fdnd-agency.directus.app/items/preludefonds_instruments/?${params}`;
   const instrumentsResponse = await fetch(url) 
   const instrumentsResponseJSON = await instrumentsResponse.json()
-  const allInstruments = instrumentsResponseJSON.data
 
   response.render('partials/_preview-overview.liquid', {
     instruments: instrumentsResponseJSON.data

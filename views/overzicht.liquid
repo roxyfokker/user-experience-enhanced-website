@@ -100,7 +100,7 @@
                                     <td>{{ instrument.brand         | default: "Onbekend" }}</td>
                                     <td>{{ instrument.property      | default: "Onbekend" }}</td>
                                     <td>
-                                        <span class="labell
+                                        <span class="status-label
                                             {% if status == 'Beschikbaar' %}status-available
                                             {% elsif status == 'In reparatie' %}status-repair
                                             {% elsif status == 'Uitgeleend' or status == 'In gebruik voor school' %}status-borrowed
