@@ -226,7 +226,7 @@ h1, h2, h3, h4, h5{
   line-height:              var(--line-height-heading);
   letter-spacing:           var(--letter-spacing-heading);
   color:                    var(--color-text-brand);
-  margin:                   0 0 0.5rem 0;
+  margin:                   0 0 var(--spacing-sm) 0;
 }
 
 h1{ font-size:              var(--font-size-h1);}
@@ -238,7 +238,7 @@ h5{ font-size:              var(--font-size-h5);}
 p{  
   font-size:                var(--font-size-body-md);
   max-width:                70ch;
-  margin:                   0 0 1rem 0;
+  margin:                   0 0 var(--spacing-md) 0;
 }
 
 /* button - primary */
@@ -313,14 +313,14 @@ p{
   flex-direction: row;
   
   input {
-    border: 0.07rem solid var(--color-brand-darkest);
+    border: var(--font-size-body-xs) solid var(--color-brand-darkest);
     border-top-left-radius: var(--border-radius);
     border-bottom-left-radius: var(--border-radius);
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
     padding: var(--spacing-sm);
     flex: 1;
-    font-size: 1rem;
+    font-size: var(--font-size-body-md);
   }
 
   button {
@@ -346,26 +346,26 @@ form{
     font-size: var(--font-size-body-sm);
     display: flex;
     flex-direction: column;
-    margin-bottom: 1.2rem;
+    margin-bottom: var(--spacing-lg);
     text-align: left;
     input{
       padding: var(--spacing-sm);
-      font-size: 1rem;
+      font-size: var(--font-size-body-md);
       color: var(--color-brand-darker);
-      border: solid var(--color-brand-darker) 0.05rem;
-      border-radius: 0.375rem;
+      border: solid var(--color-brand-darker) var(--border-width-sm);
+      border-radius: var(--border-radius);
       &::placeholder{  
-        color: var(--color-neutral-500);
-        font-size: 1rem;
+        color: var(--color-neutral-mid);
+        font-size: var(--font-size-body-sm);
       }
       &:hover, &:focus{ 
-        outline: 0.09rem solid var(--color-brand-darker);
+        outline: var(--border-width-sm) solid var(--color-brand-darker);
       }
       &:valid{
         background-color: var(--color-brand-lighter);
       }
       &:required:invalid:not(:placeholder-shown){
-        border:solid 0.15rem var(--color-danger-dark);
+        border:solid var(--border-width-md) var(--color-danger-dark);
         background-color: var(--color-danger-lightest);
       }
     }
@@ -378,69 +378,69 @@ form{
 }
 form{
   select{
-    padding: 0.6rem 0.8rem;
-    font-size: 1rem;
-    color: var(--color-primary);
-    border: solid var(--color-primary) 0.05rem;
-    border-radius: 0.375rem;
+    padding: var(--spacing-sm);
+    font-size: var(--font-size-body-md);
+    color: var(--color-brand-darker);
+    border: solid var(--color-brand-darker) var(--border-width-sm);
+    border-radius: var(--border-radius);
     
     option{
-      color: var(--color-primary);
+      color: var(--color-brand-darker);
       position: relative;
     }
 
     &:hover, &:focus{
-      outline: 0.09rem solid var(--color-primary);
+      outline: var(--border-width-sm) solid var(--color-brand-darker);
     }
     
     &:invalid {
-      color: var(--color-neutral-500);
+      color: var(--color-neutral-mid);
       background-color: inherit; /* inherit — Baseline: WIDELY AVAILABLE */
     }
     &:valid {
-      background-color: var(--color-primary-bg);
+      background-color: var(--color-brand-mid);
     }
   }
 }
 form{
   textarea{
-    padding: 0.6rem 0.8rem;
-    font-size: inherit;
-    border: solid var(--color-primary) 0.05rem;
-    border-radius: 0.375rem;
+    padding: var(--spacing-sm);
+    font-size: var(--font-size-body-md);
+    border: solid var(--color-brand-darker) var(--border-width-sm);
+    border-radius: var(--border-radius);
     &::placeholder{
-      font-family: var(--font-sans);  
+      font-family: var(--font-primary);  
     }
     &:hover, &:focus{
-      outline: 0.09rem solid var(--color-primary);
+      outline: var(--border-width-sm) solid var(--color-brand-darker);
     }
   }
 }
 form{
   fieldset{
     border: none;
-    padding-bottom: 1.5rem;
+    padding-bottom: var(--spacing-lg);
     legend{
-      color: var(--color-primary);
-      font-size: 1.2rem;
+      color: var(--color-brand-darker);
+      font-size: var(--font-size-body-md);
       padding-bottom: 0.2rem;
     }
     .upload-box{
-      background-color: var(--color-primary-bg);
-      border: 0.15rem dashed var(--color-primary);
-      border-radius: 0.375rem;
-      padding: 1.5rem;
+      background-color: var(--color-brand-light);
+      border: var(--border-width-md) dashed var(--color-brand-darker);
+      border-radius: var(--border-radius);
+      padding: var(--spacing-lg);
       display: flex;
       justify-content: center;
       text-align: center;
-      padding-bottom: 0.5rem;
+      padding-bottom: var(--spacing-sm);
       span{
-        color: var(--color-primary-border);
-        font-size: 0.8rem;
+        color: var(--color-brand-darker);
+        font-size: var(--font-size-body-xs);
       }
 
       &:hover {
-        border-color: var(--color-primary-hover, #9b59b6);
+        border-color: var(--color-brand-darker, #9b59b6);
         outline: 0.2rem;
         cursor: pointer;
       }

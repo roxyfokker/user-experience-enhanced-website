@@ -1,7 +1,7 @@
 /* ----------- Algemeen ---------------------------------*/
 main{
     width: 100%;
-    margin: 1rem auto;
+    margin: var(--spacing-md) auto;
     max-width: 1280px;
     padding: 0 var(--spacing-xl);
 }
@@ -130,7 +130,7 @@ main{
     .stats-item:first-child{
         display:        flex;
         flex-direction: column;
-        padding-bottom: 1em;
+        padding-bottom: var(--spacing-md);
         gap: var(--spacing-md);
 
         dt {
@@ -668,6 +668,11 @@ dialog {
             .banner-text { margin-left: var(--spacing-sm); }
             .status-label { margin-left: auto; }
         }
+    }
+    .btn-box{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-sm);
     }
 }
 /* ------------ Actie menu ------------------------------*/
