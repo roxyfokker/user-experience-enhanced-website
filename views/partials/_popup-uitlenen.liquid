@@ -38,8 +38,18 @@
         <input type="hidden" name="status" value="Uitgeleend">
         <input type="hidden" name="rented_from" value="{{ 'now' | date: '%Y-%m-%dT%H:%M:%S' }}">
 
+        <label>
+            Door wie word het instrument uitgeleent ?
+            <input type="text" name="performed_by" placeholder="Naam Docent" required>
+        </label>
+
         <label>Uitgeleend aan: *
             <input type="text" name="student_name" placeholder="bijv. Jan de Vries" required>
+        </label>
+
+        <label>
+            Opmerking:
+            <input type="text" name="note" placeholder="Opmerkingen">
         </label>
 
         <button class="btn btn-secondary" onclick="document.getElementById('uitlenen-dialog').close()">Annuleren</button>

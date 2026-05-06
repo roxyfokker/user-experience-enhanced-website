@@ -35,6 +35,21 @@
     <form action="/instrumenten/{{ instrument.id }}/schade" method="POST">
         <input type="hidden" name="status" value="In reparatie">
 
+        <label>
+            Door wie word de schade gemeld ?
+            <input type="text" name="performed_by" placeholder="Jouw naam" required>
+        </label>
+        
+        <label>
+            Door wie is de schade ontstaan ?
+            <input type="text" name="involved_party" placeholder="Waar ontstond de schade?" required>
+        </label>
+        
+        <label>
+           Beschrijving:
+            <input type="text" name="note" placeholder="Opmerkingen">
+        </label>
+
         <button class="btn btn-secondary" onclick="document.getElementById('schade-dialog').close()">Annuleren</button>
         <button class="btn btn-primary" type="submit">Schade melden</button>
     </form>

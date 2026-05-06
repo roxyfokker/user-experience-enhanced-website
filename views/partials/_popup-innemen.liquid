@@ -35,6 +35,16 @@
 
     <form action="/instrumenten/{{ instrument.id }}/innemen" method="POST">
         <input type="hidden" name="status" value="Beschikbaar">
+
+        <label>
+            Door wie word het instrument ingenomen ?
+            <input type="text" name="performed_by" placeholder="Jouw naam" required>
+        </label>
+        
+        <label>
+            Door wie word het instrument teruggebracht ?
+            <input type="text" name="involved_party" placeholder="Van wie wordt ingenomen?" required>
+        </label>
         
         <button class="btn btn-secondary" onclick="document.getElementById('innemen-dialog').close()">Annuleren</button>
         <button class="btn btn-primary" type="submit">Instrument Innemen</button>

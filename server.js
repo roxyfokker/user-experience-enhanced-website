@@ -115,6 +115,18 @@ app.post('/instrumenten/:id/uitlenen', async function (request, response){
     headers: { 'Content-Type': 'application/json;charset=UTF-8' }
   });
 
+  await fetch('https://fdnd-agency.directus.app/items/preludefonds_log', {
+    method: 'POST',
+    body: JSON.stringify({
+      type_actie: 'Uitlenen',
+      performed_by: request.body.performed_by,
+      involved_party: request.body.student_name,
+      note: request.body.note || null,
+      instrument: id,
+    }),
+    headers: { 'Content-Type': 'application/json;charset=UTF-8' }
+  });
+
   response.redirect(303, '/instrumenten/' + id);
 });
 
@@ -131,6 +143,18 @@ app.post('/instrumenten/:id/innemen', async function (request, response){
     headers: { 'Content-Type': 'application/json;charset=UTF-8' }
   });
 
+  await fetch('https://fdnd-agency.directus.app/items/preludefonds_log', {
+    method: 'POST',
+    body: JSON.stringify({
+      type_actie: 'Innemen',
+      performed_by: request.body.performed_by,
+      involved_party: request.body.involved_party,
+      note: request.body.note || null,
+      instrument: id,
+    }),
+    headers: { 'Content-Type': 'application/json;charset=UTF-8' }
+  });
+
   response.redirect(303, '/instrumenten/' + id);
 });
 
@@ -142,6 +166,18 @@ app.post('/instrumenten/:id/schade', async function (request, response){
     body: JSON.stringify({
       status: request.body.status,
       details: request.body.details,
+    }),
+    headers: { 'Content-Type': 'application/json;charset=UTF-8' }
+  });
+
+   await fetch('https://fdnd-agency.directus.app/items/preludefonds_log', {
+    method: 'POST',
+    body: JSON.stringify({
+      type_actie: 'Schade melden',
+      performed_by: request.body.performed_by,
+      involved_party: request.body.involved_party,
+      note: request.body.details || null,
+      instrument: id,
     }),
     headers: { 'Content-Type': 'application/json;charset=UTF-8' }
   });
