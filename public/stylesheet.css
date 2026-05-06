@@ -250,14 +250,26 @@ p{
   font-weight:             var(--font-weight-regular);
   line-height:             1;
   white-space:             nowrap;
-  background-color:        var(--color-btn-base);
-  color:                   var(--color-text-inverse);
   border:                  var(--border-width-md) solid transparent;
   border-radius:           var(--border-radius);
   box-shadow:              var(--shadow-btn-default);
 
   @media (prefers-reduced-motion: no-preference) {
-    .btn { transition: all 150ms ease-out}
+    .btn { transition: all 200ms ease-out}
+  }
+}
+
+.btn-primary{
+  background-color:        var(--color-btn-base);
+  color:                   var(--color-text-inverse);
+  border:                  solid var(--border-width-md) var(--color-brand-darker);
+}
+.btn-secondary{
+  background-color:        var(--color-neutral-surface);
+  color:                   var(--color-brand-darker);
+  border:                  solid var(--border-width-md) var(--color-brand-darker);
+  &:hover{
+    color: var(--color-neutral-surface);
   }
 }
 

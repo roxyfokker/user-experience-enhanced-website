@@ -28,13 +28,27 @@
         </span>
     </section>
 
-    <button onclick="document.getElementById('uitlenen-dialog').showModal()">Uitlenen</button>
-        {% render 'partials/_popup-uitlenen.liquid' %}
-    <button onclick="document.getElementById('innemen-dialog').showModal()">Innemen</button>
-        {% render 'partials/_popup-innemen.liquid' %}
-    <button onclick="document.getElementById('schade-dialog').showModal()">Schade melden</button>
-        {% render 'partials/_popup-schade-melden.liquid' %}
-    <button onclick="document.getElementById('popup-menu').close()">bekijk detials</button>
+    <section class="action-btns" role="group" aria-label="Instrumenten acties">
+
+        {% comment %} Als instrument onbekend {% endcomment %}
+        <button class="btn btn-primary" onclick="document.getElementById('toevoegen-dialog').showModal()">Instrument toevoegen</button>
+            {% render 'partials/_popup-innemen.liquid' %}
+
+        {% comment %} Als status beschikbaar {% endcomment %}
+        <button class="btn btn-primary" onclick="document.getElementById('uitlenen-dialog').showModal()">Uitlenen</button>
+            {% render 'partials/_popup-uitlenen.liquid' %}
+
+        {% comment %} Als status uitgeleent {% endcomment %}
+        <button class="btn btn-primary" onclick="document.getElementById('innemen-dialog').showModal()">Innemen</button>
+            {% render 'partials/_popup-innemen.liquid' %}
+
+        {% comment %} Ongeacht de status {% endcomment %}
+        <button class="btn btn-secondary" onclick="document.getElementById('schade-dialog').showModal()">Schade melden</button>
+            {% render 'partials/_popup-schade-melden.liquid' %}
+            
+        <button class="btn btn-secondary" onclick="document.getElementById('popup-menu').close()">bekijk detials</button>
+    </section>
+
 </dialog>
 
 

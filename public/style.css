@@ -522,26 +522,49 @@ picture{
 /* ------------ Popup------------------------------------*/
 dialog{
     border: solid var(--color-brand-dark) var(--border-width-lg);
-    border-radius: var(--border-radius);
-    background-color: var(--color-brand-lightest);
+    border-radius: var(--border-radius-lg);
+    background-color: var(--color-neutral-surface);
     width: 80vw;
     margin: auto;
-    padding: var(--spacing-lg);
+    padding: var(--spacing-xl);
+    background-color: var(--color-brand-lightest);
+    
     .popup-banner{
         border: solid var(--color-brand-dark) var(--border-width-md);
         border-radius: var(--border-radius);
         padding: var(--spacing-md);
         display: flex;
         align-items: center;
+        background-color: var(--color-neutral-surface);
+
         .plaatje{
-            background-color: var(--color-brand-dark);
+            background-color: var(--color-brand-mid);
             height: 5rem;
             width: 5rem;
             border-radius: var(--border-radius);
             margin-right: 1rem;
         }
+        .text{
+            p{
+                margin: 0;
+                &:first-of-type{
+                    font-weight: var(--font-weight-regular);
+                }
+                &:last-of-type{
+                    font-weight: var(--font-weight-light);
+                    font-size: var(--font-size-body-xs);
+                }
+            }
+        }
         span{
             margin-left: auto;
+        }
+    }
+    .action-btns{
+        display: flex;
+        flex-direction: column;
+        button{
+            margin-top: var(--spacing-md);
         }
     }
 }
