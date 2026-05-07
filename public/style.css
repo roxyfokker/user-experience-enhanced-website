@@ -359,7 +359,11 @@ main{
             select {
                 flex: 1;
             }
+            button{
+                align-self: stretch;
+            }
         }
+        
     }
 
     .btn-toevoegen {
