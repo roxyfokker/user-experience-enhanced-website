@@ -61,7 +61,7 @@
                 </picture>
             </a>
 
-            <section class="instrument-info">
+            <aside class="instrument-info">
                 <dl>
                     <dt>Merk:</dt>
                     <dd>{{ instruments.brand | default: "Onbekend" }}</dd>
@@ -75,43 +75,65 @@
                     <dt>Eigendom:</dt>
                     <dd>{{ instruments.property | default: "Onbekend" }}</dd>
                 </dl>
-            </section>
+            </aside>
+            <div class="instrument-body">
+                <p><strong>Beschijving</strong></p>
+                <p>{{ instruments.details | default: 'Geen extra informatie bekend over dit instrument' }}</p>
+                <section class="instrument-action">
+                    <h3>Wat wil je doen?</h3>
+                    {% if instruments.status == 'Beschikbaar' %}
+                        <button onclick="document.getElementById('uitlenen-dialog').showModal()">
+                            <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6.11929 16.6136H2.70643C2.28145 16.6428 1.86369 16.4769 1.54409 16.152C1.22449 15.8271 1.02893 15.3695 1 14.8788V2.73808C1.02893 2.24741 1.22449 1.7898 1.54409 1.4649C1.86369 1.13999 2.28145 0.974097 2.70643 1.00333H6.11929" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M10.7332 12.6701L15 8.8114L10.7332 4.94679" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M15 8.80804H4.75995" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Uitlenen
+                        </button> 
+                    {% else %}
+                        <button onclick="document.getElementById('innemen-dialog').showModal()">
+                            <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5.8 14.7143L1 10.1429L5.8 5.57143M1 10.1429H14.2C15.473 10.1429 16.6939 9.66123 17.5941 8.80392C18.4943 7.94661 19 6.78385 19 5.57143C19 4.35901 18.4943 3.19625 17.5941 2.33894C16.6939 1.48163 15.473 1 14.2 1H13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Innemen
+                        </button> 
+                    {% endif %}
+                    <button onclick="document.getElementById('schade-dialog').showModal()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="17.545" height="15.425" viewBox="0 0 17.545 15.425">
+                            <g id="Group_58" data-name="Group 58" transform="translate(1.023 1)">
+                                <path id="Path_8" data-name="Path 8" d="M7.45,2.525,1.169,13.011a1.483,1.483,0,0,0,1.268,2.225H15a1.483,1.483,0,0,0,1.268-2.225L9.986,2.525a1.483,1.483,0,0,0-2.536,0Z" transform="translate(-0.97 -1.811)" fill="none" stroke="#3A1258" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                <path id="Path_9" data-name="Path 9" d="M7.5,5.625V8.591" transform="translate(0.248 -1.1)" fill="none" stroke="#3A1258" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                <path id="Path_10" data-name="Path 10" d="M7.5,10.625h.007" transform="translate(0.248 -0.166)" fill="none" stroke="#3A1258" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                            </g>
+                        </svg>
+                        Schade melden
+                    </button> 
+                </section>
+                
+                
+                <section class="instrument-info-more">
+                    <details class="met-data">
+                        <summary>Uitgeleend</summary>
+                        <dl>
+                            <dt>Uitgeleent aan:</dt>
+                            <dd>Pietje Puck</dd>
 
-            <section class="instrument-action">
-                {% if instruments.status == 'Beschikbaar' %}
-                    <a href="">Uitlenen</a> 
-                {% else %}
-                    <a href="">Innemen</a>
-                {% endif %}
-                <a href="">Schade melden</a>
-            </section>
+                            <dt>Uitgeleent vanaf:</dt>
+                            <dd>Maart 2025</dd>
+                        </dl>
+                    </details>
+                    <details>
+                        <!--Hier komt nog wat anders placeholder-->
+                        <summary>Beheer / actie geschiednis</summary>
+                        <ul>
+                            <li><time datetime="2026-03-30">30 maart 2026</time> — Schade gemeld</li>
+                            <li><time datetime="2026-03-28">28 maart 2026</time> — Ingenomen</li>
+                            <li><time datetime="2026-03-20">20 maart 2026</time> — Uitgeleend</li>
+                        </ul>
+                    </details>
+                </section>
+            </div>
             
-            
-            <section class="instrument-info-more">
-                <details>
-                    <summary>Beschrijving</summary>
-                    <p>{{ instruments.details | default: "Onbekend" }}</p>
-                </details>
-                <details class="met-data">
-                    <summary>Uitgeleend</summary>
-                    <dl>
-                        <dt>Uitgeleent aan:</dt>
-                        <dd>Pietje Puck</dd>
-
-                        <dt>Uitgeleent vanaf:</dt>
-                        <dd>Maart 2025</dd>
-                    </dl>
-                </details>
-                <details>
-                    <!--Hier komt nog wat anders placeholder-->
-                    <summary>Beheer / actie geschiednis</summary>
-                    <ul>
-                        <li><time datetime="2026-03-30">30 maart 2026</time> — Schade gemeld</li>
-                        <li><time datetime="2026-03-28">28 maart 2026</time> — Ingenomen</li>
-                        <li><time datetime="2026-03-20">20 maart 2026</time> — Uitgeleend</li>
-                    </ul>
-                </details>
-            </section>
             
            
         </article>
