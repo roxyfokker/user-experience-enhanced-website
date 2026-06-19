@@ -15,7 +15,13 @@ Ontwerp en maak een interactieve website die snel laadt en prettig te gebruiken 
 Voor Cool Kunst en Cultuur is een digitale instrumentenuitleentool ontwikkeld waarmee docenten en administratie realtime inzicht krijgen in de instrumentenvoorraad van het Prelude Fonds. De focus lag op usability en performance: snelle laadtijden, duidelijke navigatie en client-side scripting om de interface efficiënter en prettiger in gebruik te maken.
 
 <img width="100" height="120" alt="image" src="https://github.com/user-attachments/assets/06e2afe6-c723-4791-a58e-3d58d673e410" />
+
 <img width="1920" height="1652" alt="image" src="https://github.com/user-attachments/assets/22c78fc2-64dc-4555-82da-7d0dd5827a8c" />
+<img width="1920" height="1049" alt="Screenshot 2026-06-19 at 10-25-19 PreludeFonds" src="https://github.com/user-attachments/assets/a9869c2c-83cb-459c-9b1e-fb8ee38f71ef" />
+<img width="492" height="1105" alt="image" src="https://github.com/user-attachments/assets/2855dca1-b877-4e1b-bc44-f16ff555fc4f" />
+<img width="1460" height="1175" alt="image" src="https://github.com/user-attachments/assets/b1bf165a-4d11-423a-9067-7ae9f5ce5b17" />
+
+
 ### Commit-conventies
  
 ```
