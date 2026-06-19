@@ -37,6 +37,7 @@ app.get('/', async function (request, response) {
     totalBeschikbaar: totalBeschikbaar,
     totalUitgeleend: totalUitgeleend,
     totalReparatie: totalReparatie,
+    path: request.path,
     status: request.query.status || null,
   });
 });
@@ -67,6 +68,7 @@ app.get('/instrumenten', async function (request, response) {
     zoekterm: request.query.zoek || '',
     sort: request.query.sort || '-id',
     type: request.query.type || '',
+    path: request.path,
     aantalResultaten: instrumentsResponseJSON.data.length
   });
 });
@@ -85,7 +87,6 @@ app.get('/instrumenten/preview', async function (request, response) {
   });
 });
 
-
 app.get('/instrumenten/:id', async function (request, response) {
   const url = 'https://fdnd-agency.directus.app/items/preludefonds_instruments/' + request.params.id + '?fields=*,photo.id,photo.width,photo.height';
   const instrumentsResponse = await fetch(url) 
@@ -100,7 +101,6 @@ app.get('/instrumenten/:id', async function (request, response) {
 app.get('/activiteiten', async function (request, response) {
   response.render('activiteitenlog.liquid');
 });
-
 
 app.post('/instrumenten', async function (request, response){
   const key = request.body.name   // "  Gitaar Akoestisch  "
@@ -128,7 +128,7 @@ app.post('/instrumenten', async function (request, response){
    await fetch('https://fdnd-agency.directus.app/items/preludefonds_log', {
     method: 'POST',
     body: JSON.stringify({
-      type_actie: 'Toevoegen',
+      type_action: 'Toevoegen',
       performed_by: request.body.performed_by || null,
       note: null,
     }),
@@ -152,7 +152,7 @@ app.post('/instrumenten/:id/uitlenen', async function (request, response){
   await fetch('https://fdnd-agency.directus.app/items/preludefonds_log', {
     method: 'POST',
     body: JSON.stringify({
-      type_actie: 'Uitlenen',
+      type_action: 'Uitlenen',
       performed_by: request.body.performed_by,
       involved_party: request.body.student_name,
       note: request.body.note || null,
@@ -180,7 +180,7 @@ app.post('/instrumenten/:id/innemen', async function (request, response){
   await fetch('https://fdnd-agency.directus.app/items/preludefonds_log', {
     method: 'POST',
     body: JSON.stringify({
-      type_actie: 'Innemen',
+      type_action: 'Innemen',
       performed_by: request.body.performed_by,
       involved_party: request.body.involved_party,
       note: request.body.note || null,
@@ -207,7 +207,7 @@ app.post('/instrumenten/:id/schade', async function (request, response){
    await fetch('https://fdnd-agency.directus.app/items/preludefonds_log', {
     method: 'POST',
     body: JSON.stringify({
-      type_actie: 'Schade melden',
+      type_action: 'Schade',
       performed_by: request.body.performed_by,
       involved_party: request.body.involved_party,
       note: request.body.details || null,

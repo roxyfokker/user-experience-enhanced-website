@@ -1,2 +1,69 @@
+{% layout 'layouts/base.liquid'%}
 {% block content %}
+<h1>
+    Activiteiten
+</h1>
+
+<ol>
+    {% for log in logs %}
+    <li>
+        <article>
+            <span class="log-action-icon" aria-hidden="true">
+                {% case log.type_action %}
+                    {% when 'Uitlenen' %}
+                        <img src="/assets/icons/uitlenen.svg" alt="">
+                    {% when 'Innemen' %}
+                        <img src="/assets/icons/innemen.svg" alt="">
+                    {% when 'Schade' %}
+                        <img src="/assets/icons/schade.svg" alt="">
+                    {% when 'Toevoegen' %}
+                        <img src="/assets/icons/toevoegen.svg" alt="">
+                    {% when 'Aanpassen' %}
+                        <img src="/assets/icons/aanpassen.svg" alt="">
+                    {% when 'Verwijderen' %}
+                        <img src="/assets/icons/verwijderen.svg" alt="">
+                {% endcase %}
+            </span>
+
+            <section class="log-details">
+                <h2 class="log-action">{{ log.type_action | default: 'onbekend'}}</h2>
+
+                <dl class="action-instrument">
+                    <dt class="sr-only">Instrument</dt>
+                    <dd>{{ log.instrument.name | default: 'onbekend' }}</dd>
+                    <dd>#{{ log.instrument.serial_number | default: 'onbekend' }}</dd>
+                </dl>
+
+                <dl class="log-parties">
+                    {% case log.type_action %}
+                        {% when 'Uitlenen' %}
+                        <dt>Uitgeleend door</dt>
+                        <dd>{{ log.performed_by | default: 'onbekend' }}</dd>
+                        <dt>Aan</dt>
+                        <dd>{{ log.involved_party | default: 'onbekend' }}</dd>
+
+                        {% when 'Innemen' %}
+                        <dt>Ingenomen door</dt>
+                        <dd>{{ log.performed_by | default: 'onbekend' }}</dd>
+                        <dt>Van</dt>
+                        <dd>{{ log.involved_party | default: 'onbekend' }}</dd>
+
+                        {% when 'Schade' %}
+                        <dt>Schade gemeld door</dt>
+                        <dd>{{ log.performed_by | default: 'onbekend' }}</dd>
+                        <dt>Ontstaan bij</dt>
+                        <dd>{{ log.involved_party | default: 'onbekend' }}</dd>
+
+                        {% when 'Toevoegen', 'Aanpassen', 'Verwijderen' %}
+                        <dt>Door</dt>
+                        <dd>{{ log.performed_by | default: 'onbekend' }}</dd>
+                    {% endcase %}
+                </dl>
+            </section>
+
+            <time class="log-time" datetime="{{ log.date_created }}">{{ log.date_created | date: "%H:%M" }}</time>
+        </article>
+    </li>
+    {% endfor %}
+</ol>
 {% endblock %}

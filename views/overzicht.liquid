@@ -1,4 +1,4 @@
-{% render 'layouts/base.liquid' %}
+{% layout 'layouts/base.liquid'%}
 {% block content %}
     <main class="instrument-overview-main">
         <h2>Overzicht van de instrumenten</h2>
@@ -146,19 +146,19 @@
                                     <td>{{ instrument.property      | default: "Onbekend" }}</td>
                                     <td>
                                         <span class="status-label
-                                            {% if status == 'Beschikbaar' %}status-available
-                                            {% elsif status == 'In reparatie' %}status-repair
-                                            {% elsif status == 'Uitgeleend' or status == 'In gebruik voor school' %}status-borrowed
+                                            {% if instrument.status == 'Beschikbaar' %}status-available
+                                            {% elsif instrument.status == 'In reparatie' %}status-repair
+                                            {% elsif instrument.status == 'Uitgeleend' or instrument.status == 'In gebruik voor school' %}status-borrowed
                                             {% else %}status-unknown
                                             {% endif %}
                                         ">
-                                            {% if status == 'Beschikbaar' %}
+                                            {% if instrument.status == 'Beschikbaar' %}
                                                 Beschikbaar 
-                                            {% elsif status == 'In reparatie' %}
+                                            {% elsif instrument.status == 'In reparatie' %}
                                                 In Reparatie 
-                                            {% elsif status == 'Uitgeleend' %}
+                                            {% elsif instrument.status == 'Uitgeleend' %}
                                                 Uitgeleend 
-                                            {% elsif status == 'In gebruik voor school' %}
+                                            {% elsif instrument.status == 'In gebruik voor school' %}
                                                 In Gebruik voor school
                                             {% else %}
                                                 Onbekend
