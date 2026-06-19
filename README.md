@@ -16,8 +16,9 @@ De instructie vind je in: [INSTRUCTIONS.md](https://github.com/fdnd-task/enhance
 
 ## Beschrijving
 <!-- Bij Beschrijving staat kort beschreven wat voor project het is en wat je hebt gemaakt -->
-<!-- Voeg een mooie poster visual toe 📸 -->
-<!-- Voeg een link toe naar je live site 🌐-->
+<img width="1920" height="1652" alt="image" src="https://github.com/user-attachments/assets/22c78fc2-64dc-4555-82da-7d0dd5827a8c" />
+
+https://user-experience-enhanced-website-sprint-ggzc.onrender.com
 
 ## Gebruik
 <!-- Bij Gebruik staat de user story, hoe het werkt en wat je er mee kan. -->
