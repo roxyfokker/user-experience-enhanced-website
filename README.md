@@ -11,17 +11,20 @@ De instructie vind je in: [INSTRUCTIONS.md](https://github.com/fdnd-task/enhance
   * [Gebruik](#gebruik)
   * [Kenmerken](#kenmerken)
   * [Installatie](#installatie)
-  * [Bronnen](#bronnen)
   * [Licentie](#licentie)
 
 ## Beschrijving
-<!-- Bij Beschrijving staat kort beschreven wat voor project het is en wat je hebt gemaakt -->
+
+Voor Cool Kunst en Cultuur is een digitale instrumentenuitleentool ontwikkeld waarmee docenten en administratie realtime inzicht krijgen in de instrumentenvoorraad van het Prelude Fonds. De focus lag op usability en performance: snelle laadtijden, duidelijke navigatie en client-side scripting om de interface efficiënter en prettiger in gebruik te maken.
+
+<img width="320" height="346" alt="image" src="https://github.com/user-attachments/assets/06e2afe6-c723-4791-a58e-3d58d673e410" />
 <img width="1920" height="1652" alt="image" src="https://github.com/user-attachments/assets/22c78fc2-64dc-4555-82da-7d0dd5827a8c" />
+
 
 https://user-experience-enhanced-website-sprint-ggzc.onrender.com
 
 ## Gebruik
-<!-- Bij Gebruik staat de user story, hoe het werkt en wat je er mee kan. -->
+
 
 ## Kenmerken
 <!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met JS gedaan en hoe? Misschien heb je iets met NodeJS gedaan, of heb je een framwork of library gebruikt? -->
@@ -40,8 +43,6 @@ https://user-experience-enhanced-website-sprint-ggzc.onrender.com
 ```
    Het project is nu bereikbaar op **http://localhost:8000**.
 5. Wanneer je klaar bent, stop je de server met **Control + C** in de terminal.
-
-## Bronnen
 
 ## Licentie
 
