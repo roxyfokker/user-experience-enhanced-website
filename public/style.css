@@ -349,7 +349,7 @@ main{
         gap: var(--spacing-sm);
 
         @media (min-width: 700px) {
-            flex-direction: row;
+            flex-direction: column;
         }
     }
 
@@ -392,7 +392,9 @@ main{
         }
         
     }
-
+    #popup-toevoegen{
+        z-index: 9999;
+    }
     .btn-toevoegen {
         align-self: flex-start;
     }
@@ -871,9 +873,8 @@ dialog {
             font-weight: var(--font-weight-regular);
         }
     }
-}
+}  
 /* ------------ uitlenen --------------------------------*/
-
 /* ------------ Innemen ---------------------------------*/
 /* ------------ scahde melden ---------------------------*/
 /*partial */

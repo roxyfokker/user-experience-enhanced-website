@@ -139,3 +139,72 @@
         </article>
     </main>
 {% endblock %}
+{% block scripts %}
+    <script type="module">
+    /*
+        Client-side script voor enhancement
+        type="module" is een feature detection,
+        browsers die dat ondersteunen, ondersteunen ook fetch (en andere js methoden) 
+        https://snugug.com/musings/modern-cutting-the-mustard/
+    */
+
+    const shadeForm = document.querySelector(".schadeForm")
+    const shadeButton = document.querySelector(".schadeButton")
+    const statusLabels = document.querySelectorAll(".status-label")
+
+    // Als er op de submit button wordt geklikt ...
+    shadeForm.addEventListener("submit", async function(event) {
+        // Voorkom de standaard submit van de browser
+        // Let op: hiermee overschrijven we de default Loading state van de browser...
+        event.preventDefault()
+        
+        //Loading state tonen:
+        shadeButton.classList.add("loading")
+        shadeButton.disabled = true
+        shadeButton.textContent = "loading..."
+
+        //formdata voorbereiden:
+        let formData = new FormData(shadeForm);    
+
+        // Data fetchen:
+        // Doe een fetch naar de server, net als hoe de browser dit normaal zou doen
+        // Gebruik daarvoor het action en method attribuut van het formulier
+        // Stuur de formulierelementen mee
+        try {
+            const response = await fetch(shadeForm.action, {
+                method: shadeForm.method, //POST dus
+                body: new URLSearchParams(formData) // <<< Dit moet omdat server.js anders niet met de formulier data kan werken
+            })
+
+            // Data verwerken:
+            // Jouw server.js geeft data terug als het posten goed gaat
+            const responseData = await response.text()
+
+            // Normaal zou de browser die HTML parsen en weergeven.
+            // Maar omdat we dit nu in client-side JS doen moeten we dit zelf doen:
+            // Parse de nieuwe HTML en maak onderwater een nieuw Document Object Model aan
+            const parser = new DOMParser()
+            const responseDOM = parser.parseFromString(responseData, 'text/html')
+
+            // Zoek in de onderwater DOM de nieuwe state op
+            const newState = responseDOM.querySelector('.status-label')
+
+            // Overschrijf de HTML met de nieuwe HTML
+            // We gaan de nieuwe state toevoegen aan de DOM, aan de scorelijst in de ol
+            statusLabels.forEach(label => {
+                label.outerHTML = newState.outerHTML
+            })
+            
+            shadeButton.textContent = "Schade gemeld ✓"
+        } catch (error) {
+            shadeButton.textContent = "Mislukt, probeer opnieuw"
+        } finally {
+            // Loading state weghalen
+            // Nu kan je waarschijnlijk de Loading state vervangen door een Success state
+            shadeButton.disabled = false
+            shadeButton.classList.remove("loading")
+        }    
+    })
+
+    </script>
+{% endblock %}

@@ -32,7 +32,7 @@
         </span>
     </section>
 
-    <form action="/instrumenten/{{ instrument.id }}/schade" method="POST">
+    <form action="/instrumenten/{{ instrument.id }}/schade" method="POST" class="schadeForm">
         <input type="hidden" name="status" value="In reparatie">
         <input type="hidden" name="action_type" value="Schade">
 
@@ -52,6 +52,6 @@
         </label>
 
         <button class="btn btn-secondary" onclick="document.getElementById('schade-dialog').close()">Annuleren</button>
-        <button class="btn btn-primary" type="submit">Schade melden</button>
+        <button class="btn btn-primary  schadeButton" type="submit">Schade melden</button>
     </form>
 </dialog>
